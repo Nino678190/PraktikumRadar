@@ -51,7 +51,7 @@ function showFilter(){
             <input type="text" id="berufsfeld" name="berufsfeld">
             <label for="Beginn">Beginn:</label>
             <input type="date" id="beginn" name="beginn">
-            <label for="Dauer">Dauer:</label>
+            <label for="Dauer">Dauer(in Tagen):</label>
             <input type="number" id="dauer" name="dauer">
             <button type="submit" onclick="displayPraktikas()">Filter</button>
         </form>
@@ -99,10 +99,21 @@ function getData() {
         ]
     ).then(function (response) {
         console.log(response); // Log the response
+        const elements = displayPraktikas(response); // Call the displayPraktikas function with the response
+        displayPraktikasEndgueltig(elements); // Call the displayPraktikasEndgueltig function with the elements
         return response; // Return the response
     }, function (error) {
         console.log(error); // Log any errors
     });
+}
+
+function displayPraktikasEndgueltig(elements){
+    const body = document.querySelector('body'); // Select the body element
+    body.innerHTML = ''; // Clear the body content
+    body.appendChild(createHeader()); // Append the header
+    body.appendChild(showFilter()); // Append the filter
+    body.appendChild(elements); // Append the praktikas content
+    body.appendChild(createFooter()); // Append the footer
 }
 
 
@@ -136,7 +147,8 @@ function showPraktikas(){
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
-    body.appendChild(displayPraktikas()); // Append the praktikas content
+    body.appendChild(showFilter()); // Append the filter
+    // body.appendChild(displayPraktikas()); // Append the praktikas content
     body.appendChild(createFooter()); // Append the footer
 }
 
