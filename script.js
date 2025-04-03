@@ -48,7 +48,7 @@ function createFooter(){
     return footer; // Return the footer element
 }
 
-function showPraktikas(){
+function displayPraktikas(){
     const data = getData(); // Get data from the database
     if (!data) return; // If no data, return
     const main = document.createElement('main'); // Create a main element
@@ -68,6 +68,15 @@ function showPraktikas(){
         </section>
         `; // Set the inner HTML
     }
+    return main; // Return the main element
+}
+
+function showPraktikas(){
+    const body = document.querySelector('body'); // Select the body element
+    body.innerHTML = ''; // Clear the body content
+    body.appendChild(createHeader()); // Append the header
+    body.appendChild(displayPraktikas()); // Append the praktikas content
+    body.appendChild(createFooter()); // Append the footer
 }
 
 function createHome(){
@@ -91,3 +100,4 @@ function loadHome() {
 }
 
 getData(); // Call the getData function to fetch data
+
