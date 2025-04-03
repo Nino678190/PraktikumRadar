@@ -83,18 +83,19 @@ function getData() {
     const berufsfeld = filter.berufsfeld; // Get the berufsfeld from the filter
     const beginn = filter.beginn; // Get the beginn from the filter
     const dauer = filter.dauer; // Get the dauer from the filter
-    // Create a query object
-    const query = [];
+    const query = []; // Create a query object
     if (name) query.push(Query.contains('Name', name)); // If name is not null, add it to the query
     if (ort) query.push(Query.contains('Ort', ort)); // If ort is not null, add it to the query
     if (berufsfeld) query.push(Query.contains('Berufsfeld', berufsfeld)); // If berufsfeld is not null, add it to the query
     if (beginn) query.push(Query.lessThanEqual('Beginn', beginn)); // If beginn is not null, add it to the query
     if (dauer) query.push(Query.lessThanEqual('Dauer', dauer)); // If dauer is not null, add it to the query
+    query.push(Query.limit(25)); // Limit the results to 25
+    query.push(Query.orderDesc('$updatedAt')); // Order the results by updated date
     databases.listDocuments( // List all documents in a collection
         "67eebf55000c4fcc2eac",
         "67eebf7900353b1d71ca",
-        [ // Query parameters
-            query
+        [
+            query // Query parameters
         ]
     ).then(function (response) {
         console.log(response); // Log the response
