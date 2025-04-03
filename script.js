@@ -17,6 +17,7 @@ function getData(){
         ]
     ).then(function (response) {
         console.log(response); // Log the response
+        return response; // Return the response
     }, function (error) {
         console.log(error); // Log any errors
     });
@@ -50,7 +51,13 @@ function createFooter(){
     return footer; // Return the footer element
 }
 
-function showPraktikas(){}
+function showPraktikas(){
+    const data = getData(); // Get data from the database
+    if (!data) return; // If no data, return
+    const main = document.createElement('main'); // Create a main element
+    main.className = 'praktikas'; // Set the class name
+    
+}
 
 function createHome(){
     const main = document.createElement('main'); // Create a main element
