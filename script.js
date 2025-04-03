@@ -65,6 +65,9 @@ function displayPraktikas(){
             <p>${doc.Tel || "Nicht verfügbar"}}</p>
             <p>${doc.Link || "Nicht verfügbar"}}</p>
             <p>${doc.AnzahlPlaetze || "Nicht verfügbar"}}</p>
+            <p>${doc.Dauer || "Nicht verfügbar"}}</p>
+            <p>${doc.Beginn || "Nicht verfügbar"}}</p>
+            <p>${doc['$updatedAt'] || "Nicht verfügbar"} </p>
         </section>
         `; // Set the inner HTML
     }
