@@ -1,20 +1,17 @@
-import { Client, Databases } from "appwrite"; // Importing the Client and Databases classes from the appwrite package
+const { Client, Databases } = require("appwrite"); // Importing the Client and Databases classes from the appwrite package
 const client = new Client(); // Create a new instance of the Client class
 
 client
-    .setEndpoint('http://localhost/v1') // Your API Endpoint
-    .setProject('67eebf55000c4fcc2eac') // Your project ID
+    .setEndpoint('https://cloud.appwrite.io/v1') // Für Appwrite Cloud
+    .setProject('67eebf2b001a3c98c38a') // Your project ID
 ;
 
 const databases = new Databases(client); // Create a new instance of the Databases class
 
 function getData(){
     databases.listDocuments( // List all documents in a collection
-        "67eebf55000c4fcc2eac",
+        "67eebf2b001a3c98c38a",
         "67eebf7900353b1d71ca",
-        [
-            Query.equal('title', 'Avatar') // Query to filter documents
-        ]
     ).then(function (response) {
         console.log(response); // Log the response
         return response; // Return the response
@@ -56,7 +53,7 @@ function showPraktikas(){
     if (!data) return; // If no data, return
     const main = document.createElement('main'); // Create a main element
     main.className = 'praktikas'; // Set the class name
-    
+
 }
 
 function createHome(){
@@ -79,3 +76,4 @@ function loadHome() {
     body.appendChild(createFooter()); // Append the footer
 }
 
+getData(); // Call the getData function to fetch data
