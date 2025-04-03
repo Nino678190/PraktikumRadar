@@ -10,7 +10,7 @@ const databases = new Databases(client); // Create a new instance of the Databas
 
 function getData(){
     databases.listDocuments( // List all documents in a collection
-        "67eebf2b001a3c98c38a",
+        "67eebf55000c4fcc2eac",
         "67eebf7900353b1d71ca",
     ).then(function (response) {
         console.log(response); // Log the response
@@ -53,7 +53,21 @@ function showPraktikas(){
     if (!data) return; // If no data, return
     const main = document.createElement('main'); // Create a main element
     main.className = 'praktikas'; // Set the class name
-
+    for (let i = 0; i < data.documents.length; i++) { // Loop through the documents
+        const doc = data.documents[i]; // Get the document
+        main.innerHTML += `
+        <section>
+            <p>${doc.Name || "Nicht verfügbar"}</p>
+            <p>${doc.Ort || "Nicht verfügbar"}}</p>
+            <p>${doc.Beschreibung || "Nicht verfügbar"}}</p>
+            <p>${doc.Berufsfeld || "Nicht verfügbar"}}</p>
+            <p>${doc.Email || "Nicht verfügbar"}}</p>
+            <p>${doc.Tel || "Nicht verfügbar"}}</p>
+            <p>${doc.Link || "Nicht verfügbar"}}</p>
+            <p>${doc.AnzahlPlaetze || "Nicht verfügbar"}}</p>
+        </section>
+        `; // Set the inner HTML
+    }
 }
 
 function createHome(){
