@@ -132,8 +132,8 @@ function getData() {
     queries.push(Query.orderDesc('$updatedAt')); 
     
     return databases.listDocuments(
-        "67eebf55000c4fcc2eac",
-        "67eebf7900353b1d71ca",
+        "67eebf55000c4fcc2eac", // Your database ID
+        "67eebf7900353b1d71ca", // Your collection IDs
         queries
     ).then(function (response) {
         console.log(response);
