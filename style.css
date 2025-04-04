@@ -1,7 +1,9 @@
 :root {
     --primary-color: #3498db;
-    --secondary-color: #2ecc71;
+    --header-color: #2ecc71;
+    accent-color: var(--primary-color);
     --font-color: #333;
+    --background-color: #f4f4f4;
     --font-size: 16px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
@@ -35,6 +37,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color);
+    color: var(--font-color);
 }
 
 main, .filter {
@@ -44,6 +48,11 @@ main, .filter {
 a{
     text-decoration: none;
     color: var(--font-color);
+}
+
+.standart{
+    text-decoration: underline;
+    color: lightblue;
 }
 
 header{
@@ -62,9 +71,16 @@ header{
     gap: var(--main-margin-s);
 }
 
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
 nav{
     width: fit-content;
     height: auto;
+    gap: 10px;
+    display: flex;
 }
 
 form{
@@ -78,6 +94,12 @@ form{
     flex-wrap: wrap;
 }
 
+button{
+    font-family: "NotoSans";  
+    font-size: var(--font-size);
+    font-weight: bold; 
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -89,6 +111,10 @@ footer {
     background-color: var(--primary-color);
     color: white;
     text-align: center;
+}
+
+.home{
+    padding: var(--main-margin-s);
 }
 
 .praktikum{

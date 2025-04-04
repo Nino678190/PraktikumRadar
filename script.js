@@ -14,7 +14,7 @@ function createHeader(){
     header.innerHTML = `
         <section>
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Logo">
+                <img src="images/icons8-calendar-100.png" alt="Logo" class="logo-img">
             </a>
         </section>
         <section>
@@ -32,7 +32,7 @@ function createFooter(){
     footer.className = 'footer'; // Set the class name
     footer.innerHTML = `
     <section>
-        <p>All rights reserved &copy; ${new Date().getFullYear()} by <a href="https://github.com/Nino678190">Nino678190</a></p>
+        <p>All rights reserved &copy; ${new Date().getFullYear()} by <a class="standart" href="https://github.com/Nino678190">Nino678190</a></p>
     </section>
     `; // Set the inner HTML
     return footer; // Return the footer element
@@ -218,7 +218,6 @@ function showPraktikas(){
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(showFilter()); // Append the filter
-    // body.appendChild(displayPraktikas()); // Append the praktikas content
     body.appendChild(createFooter()); // Append the footer
 }
 
