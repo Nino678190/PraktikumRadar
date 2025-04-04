@@ -12,15 +12,17 @@ function createHeader(){
     const header = document.createElement('header'); // Create a header element
     header.className = 'header'; // Set the class name
     header.innerHTML = `
-    <section>
-        <a href="praktika.html" class="logo">
-            <img src="assets/logo.png" alt="Logo">
-        </a>
-        <nav class="nav">
-            <a href="index.html">Home</a>
-            <a href="praktika.html">Praktikas</a>
-        </nav>
-    </section>
+        <section>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="Logo">
+            </a>
+        </section>
+        <section>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="praktika.html">Praktikas</a>
+            </nav>
+        </section>
     `; // Set the inner HTML
     return header; // Return the header element
 }
@@ -54,10 +56,43 @@ function showFilter(){
             <label for="Dauer">Dauer(in Tagen):</label>
             <input type="number" id="dauer" name="dauer">
             <button type="button" onclick="displayPraktikas()">Filter</button>
+            <button type="button" onclick="resetForm()">Reset</button>
         </form>
     </section>
     `; // Set the inner HTML
+    // Add event listener to form inputs to save the values in sessionStorage
+    filter.querySelector('form').addEventListener('input', function(event) {
+        const input = event.target;
+        sessionStorage.setItem(input.name, input.value); // Save the value in sessionStorage
+    });
+    // Load the saved values from sessionStorage
+    if (window.onload && sessionStorage) {
+        const inputs = filter.querySelectorAll('input');
+        inputs.forEach(input => {
+            const savedValue = sessionStorage.getItem(input.name); // Get the saved value
+            if (savedValue) {
+                input.value = savedValue; // Set the input value to the saved value
+            }
+        });
+    }
+    // Add event listener to the form input to enable the button
+    filter.querySelector('form').addEventListener('keydown', function(event) {
+        const input = event.target;
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            displayPraktikas(); // Call the displayPraktikas function
+        }
+    });
+
     return filter; // Return the filter element
+}
+
+function resetForm(){
+    const inputs = document.querySelectorAll('.filter input'); // Select all input elements in the filter
+    inputs.forEach(input => {
+        input.value = ''; // Clear the input values
+        sessionStorage.clear(); // Remove the saved value from sessionStorage
+    });
 }
 
 function getFilterData(){
@@ -156,7 +191,7 @@ function displayPraktikas() {
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
-            <section>
+            <section class="praktikum">
                 <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
                 <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
                 <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
@@ -164,7 +199,7 @@ function displayPraktikas() {
                 <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
                 <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
                 <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
-                <p>Verfügbare PLätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
                 <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
                 <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
                 <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
