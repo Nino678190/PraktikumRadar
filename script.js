@@ -143,19 +143,31 @@ function displayPraktikas() {
         
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
+            const updatet=doc['$updatedAt'];
+            const date = new Date(updatet);
+            const formattedDate = date.toLocaleDateString('de-DE', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            const formattedTime = date.toLocaleTimeString('de-DE', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
             <section>
-                <p>${doc.Name || "Nicht verfügbar"}</p>
-                <p>${doc.Ort || "Nicht verfügbar"}</p>
-                <p>${doc.Beschreibung || "Nicht verfügbar"}</p>
-                <p>${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                <p>${doc.Email || "Nicht verfügbar"}</p>
-                <p>${doc.Tel || "Nicht verfügbar"}</p>
-                <p>${doc.Link || "Nicht verfügbar"}</p>
-                <p>${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
-                <p>${doc.Dauer || "Nicht verfügbar"}</p>
-                <p>${doc.Beginn || "Nicht verfügbar"}</p>
-                <p>${doc['$updatedAt'] || "Nicht verfügbar"}</p>
+                <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
+                <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
+                <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
+                <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
+                <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
+                <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
+                <p>Verfügbare PLätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
+                <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
+                <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
             </section>
             `;
         }
