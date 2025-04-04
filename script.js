@@ -1,5 +1,5 @@
-const { Client, Databases, Query } = require("appwrite"); // Importing the Client and Databases classes from the appwrite package
-const client = new Client(); // Create a new instance of the Client class
+const { Client, Databases, Query } = Appwrite; // Globale Appwrite-Objekte aus dem Browser-SDK verwenden
+const client = new Client(); // Erstellen Sie eine neue Instanz des Client-Objekts
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Für Appwrite Cloud
@@ -13,12 +13,12 @@ function createHeader(){
     header.className = 'header'; // Set the class name
     header.innerHTML = `
     <section>
-        <a onclick="showHome()" class="logo">
+        <a href="praktika.html" class="logo">
             <img src="assets/logo.png" alt="Logo">
         </a>
         <nav class="nav">
-            <a onclick="showHome()">Home</a>
-            <a onclick="showPraktikas()">Praktikas</a>
+            <a href="index.html">Home</a>
+            <a href="praktika.html">Praktikas</a>
         </nav>
     </section>
     `; // Set the inner HTML
@@ -53,7 +53,7 @@ function showFilter(){
             <input type="date" id="beginn" name="beginn">
             <label for="Dauer">Dauer(in Tagen):</label>
             <input type="number" id="dauer" name="dauer">
-            <button type="submit" onclick="displayPraktikas()">Filter</button>
+            <button type="button" onclick="displayPraktikas()">Filter</button>
         </form>
     </section>
     `; // Set the inner HTML
@@ -77,33 +77,35 @@ function getFilterData(){
 }
 
 function getData() {
+    let queries = []; // Create a query object
     const filter = getFilterData(); // Get the filter data
     const name = filter.name; // Get the name from the filter
     const ort = filter.ort; // Get the ort from the filter
     const berufsfeld = filter.berufsfeld; // Get the berufsfeld from the filter
     const beginn = filter.beginn; // Get the beginn from the filter
     const dauer = filter.dauer; // Get the dauer from the filter
-    const query = []; // Create a query object
-    if (name) query.push(Query.contains('Name', name)); // If name is not null, add it to the query
-    if (ort) query.push(Query.contains('Ort', ort)); // If ort is not null, add it to the query
-    if (berufsfeld) query.push(Query.contains('Berufsfeld', berufsfeld)); // If berufsfeld is not null, add it to the query
-    if (beginn) query.push(Query.lessThanEqual('Beginn', beginn)); // If beginn is not null, add it to the query
-    if (dauer) query.push(Query.lessThanEqual('Dauer', dauer)); // If dauer is not null, add it to the query
-    query.push(Query.limit(25)); // Limit the results to 25
-    query.push(Query.orderDesc('$updatedAt')); // Order the results by updated date
-    databases.listDocuments( // List all documents in a collection
+    
+    // Korrigiere die Suche: Stelle sicher, dass der Parameter ein String ist
+    if (name) queries.push(Query.search('Name', String(name))); 
+    if (ort) queries.push(Query.search('Ort', String(ort))); 
+    if (berufsfeld) queries.push(Query.search('Berufsfeld', String(berufsfeld))); 
+    
+    if (beginn) queries.push(Query.lessThanEqual('Beginn', beginn)); 
+    if (dauer) queries.push(Query.lessThanEqual('Dauer', parseInt(dauer))); 
+    
+    queries.push(Query.limit(25)); 
+    queries.push(Query.orderDesc('$updatedAt')); 
+    
+    return databases.listDocuments(
         "67eebf55000c4fcc2eac",
         "67eebf7900353b1d71ca",
-        [
-            query // Query parameters
-        ]
+        queries
     ).then(function (response) {
-        console.log(response); // Log the response
-        const elements = displayPraktikas(response); // Call the displayPraktikas function with the response
-        displayPraktikasEndgueltig(elements); // Call the displayPraktikasEndgueltig function with the elements
-        return response; // Return the response
-    }, function (error) {
-        console.log(error); // Log any errors
+        console.log(response);
+        return response;
+    }).catch(function (error) {
+        console.log("Fehler bei der Datenabfrage:", error);
+        return null;
     });
 }
 
@@ -117,30 +119,51 @@ function displayPraktikasEndgueltig(elements){
 }
 
 
-function displayPraktikas(){
-    const data = getData(); // Get data from the database
-    if (!data) return; // If no data, return
-    const main = document.createElement('main'); // Create a main element
-    main.className = 'praktikas'; // Set the class name
-    for (let i = 0; i < data.documents.length; i++) { // Loop through the documents
-        const doc = data.documents[i]; // Get the document
-        main.innerHTML += `
-        <section>
-            <p>${doc.Name || "Nicht verfügbar"}</p>
-            <p>${doc.Ort || "Nicht verfügbar"}}</p>
-            <p>${doc.Beschreibung || "Nicht verfügbar"}}</p>
-            <p>${doc.Berufsfeld || "Nicht verfügbar"}}</p>
-            <p>${doc.Email || "Nicht verfügbar"}}</p>
-            <p>${doc.Tel || "Nicht verfügbar"}}</p>
-            <p>${doc.Link || "Nicht verfügbar"}}</p>
-            <p>${doc.AnzahlPlaetze || "Nicht verfügbar"}}</p>
-            <p>${doc.Dauer || "Nicht verfügbar"}}</p>
-            <p>${doc.Beginn || "Nicht verfügbar"}}</p>
-            <p>${doc['$updatedAt'] || "Nicht verfügbar"} </p>
-        </section>
-        `; // Set the inner HTML
-    }
-    return main; // Return the main element
+function displayPraktikas() {
+    // Erzeugte vor dem Anzeigen ein Lade-Element
+    const loadingElement = document.createElement('div');
+    loadingElement.textContent = 'Daten werden geladen...';
+    
+    const body = document.querySelector('body');
+    body.innerHTML = '';
+    body.appendChild(createHeader());
+    body.appendChild(showFilter());
+    body.appendChild(loadingElement);
+    body.appendChild(createFooter());
+    
+    // Daten abrufen und anzeigen
+    getData().then(data => {
+        if (!data || !data.documents || data.documents.length === 0) {
+            loadingElement.textContent = 'Keine Praktika gefunden.';
+            return;
+        }
+        
+        const main = document.createElement('main');
+        main.className = 'praktikas';
+        
+        for (let i = 0; i < data.documents.length; i++) {
+            const doc = data.documents[i];
+            main.innerHTML += `
+            <section>
+                <p>${doc.Name || "Nicht verfügbar"}</p>
+                <p>${doc.Ort || "Nicht verfügbar"}</p>
+                <p>${doc.Beschreibung || "Nicht verfügbar"}</p>
+                <p>${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                <p>${doc.Email || "Nicht verfügbar"}</p>
+                <p>${doc.Tel || "Nicht verfügbar"}</p>
+                <p>${doc.Link || "Nicht verfügbar"}</p>
+                <p>${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                <p>${doc.Dauer || "Nicht verfügbar"}</p>
+                <p>${doc.Beginn || "Nicht verfügbar"}</p>
+                <p>${doc['$updatedAt'] || "Nicht verfügbar"}</p>
+            </section>
+            `;
+        }
+        
+        // Ersetze den Loading-Text mit den Ergebnissen
+        body.removeChild(loadingElement);
+        body.insertBefore(main, body.lastChild);
+    });
 }
 
 function showPraktikas(){
@@ -171,6 +194,3 @@ function loadHome() {
     body.appendChild(createHome()); // Append the home content
     body.appendChild(createFooter()); // Append the footer
 }
-
-getData(); // Call the getData function to fetch data
-
