@@ -139,7 +139,7 @@ function getData() {
         console.log(response);
         return response;
     }).catch(function (error) {
-        console.log("Fehler bei der Datenabfrage:", error);
+        console.error("Fehler bei der Datenabfrage:", error);
         return null;
     });
 }
