@@ -144,6 +144,20 @@ function getData() {
     });
 }
 
+function getDataFirst() {
+    return databases.listDocuments(
+        "67eebf55000c4fcc2eac", // Your database ID
+        "67eebf7900353b1d71ca", // Your collection IDs
+        [Query.limit(25), Query.orderDesc('$updatedAt')]
+    ).then(function (response) {
+        console.log(response);
+        return response;
+    }).catch(function (error) {
+        console.error("Fehler bei der Datenabfrage:", error);
+        return null;
+    });
+}
+
 function displayPraktikasEndgueltig(elements){
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
@@ -175,7 +189,8 @@ function displayPraktikas() {
         
         const main = document.createElement('main');
         main.className = 'praktikas';
-        
+        main.innerHTML = `
+        <h2>Praktikas</h2>`
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
             const updatet=doc['$updatedAt'];
@@ -213,11 +228,56 @@ function displayPraktikas() {
     });
 }
 
+function showPraktikasFirst(){
+    const body = document.querySelector('body'); // Select the body element
+    const data = getDataFirst(); // Get the data
+    const main = document.createElement('main');
+    main.className = 'praktikas';
+    main.innerHTML = `
+        <h2>Praktikas</h2>`
+    for (let i = 0; i < data.documents.length; i++) {
+        const doc = data.documents[i];
+        const updatet = doc['$updatedAt'];
+        const date = new Date(updatet);
+        const formattedDate = date.toLocaleDateString('de-DE', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+        const formattedTime = date.toLocaleTimeString('de-DE', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        const formattedDateTime = `${formattedDate} ${formattedTime}`;
+        main.innerHTML += `
+            <section class="praktikum">
+                <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
+                <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
+                <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
+                <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
+                <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
+                <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
+                <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
+                <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
+                <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
+            </section>
+            `;
+    }
+
+    // Ersetze den Loading-Text mit den Ergebnissen
+    body.removeChild(loadingElement);
+    body.insertBefore(main, body.lastChild);
+}
+
+
 function showPraktikas(){
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(showFilter()); // Append the filter
+    
     body.appendChild(createFooter()); // Append the footer
 }
 

@@ -41,7 +41,7 @@ body {
     color: var(--font-color);
 }
 
-main, .filter {
+main {
     flex: 1;
 }
 
@@ -76,6 +76,10 @@ header{
     height: 50px;
 }
 
+.filter{
+    height: fit-content !important;
+}
+
 nav{
     width: fit-content;
     height: auto;
@@ -90,7 +94,7 @@ form{
     align-items: center;
     gap: var(--main-margin-s);
     width: 100%;
-    height: auto;
+    height: fit-content;
     flex-wrap: wrap;
 }
 
