@@ -1,6 +1,7 @@
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
+    --font-color: #333;
     --font-size: 16px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
@@ -40,6 +41,10 @@ main, .filter {
     flex: 1;
 }
 
+a{
+    text-decoration: none;
+    color: var(--font-color);
+}
 
 header{
     display: flex;

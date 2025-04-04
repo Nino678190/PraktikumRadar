@@ -66,7 +66,7 @@ function showFilter(){
         sessionStorage.setItem(input.name, input.value); // Save the value in sessionStorage
     });
     // Load the saved values from sessionStorage
-    if (window.onload && sessionStorage) {
+    if (sessionStorage) {
         const inputs = filter.querySelectorAll('input');
         inputs.forEach(input => {
             const savedValue = sessionStorage.getItem(input.name); // Get the saved value
