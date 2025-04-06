@@ -1,1 +1,1 @@
-# SB-Website
+# PraktikumRadar
