@@ -262,21 +262,77 @@ function showPraktikasFirst(){
                 minute: '2-digit'
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
+            
+            let emailCheck, telCheck, linkCheck = "";
+            if (doc.Email === "" || doc.Email === null || doc.Email === undefined) {
+                emailCheck = "disabled";
+            }
+            if (doc.Tel === "" || doc.Tel === null || doc.Tel === undefined) {
+                telCheck = "disabled";
+            }
+            if (doc.Link === "" || doc.Link === null || doc.Link === undefined) {
+                linkCheck = "disabled";
+            }
+            console.log(doc.Link, linkCheck);
+            if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined){
+                if (!doc.Link.includes("https://") && !doc.Link.includes("http://")) {
+                    doc.Link = "http://" + doc.Link;
+                }
+            }
+            // Format beginn date to DD.MM.YYYY
+            let formattedBeginn = "Nicht verfügbar";
+            if (doc.Beginn && doc.Beginn !== "") {
+                const beginnDate = new Date(doc.Beginn);
+                formattedBeginn = beginnDate.toLocaleDateString('de-DE', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+
             main.innerHTML += `
-                <section class="praktikum">
-                    <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
-                    <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
-                    <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
-                    <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                    <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
-                    <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
-                    <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
-                    <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
-                    <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
-                    <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
-                    <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
-                </section>
-                `;
+                <article class="Praktikumsplatz">
+                    <section>
+                        <section class="name">
+                            <h3>${doc.Name}</h3>
+                        </section>
+                        <section>
+                            <h5>&#128205; ${doc.Ort}</h5>
+                        </section>
+                        <section>
+                            <p>Dauer: ${doc.DauerInT}</p>
+                        </section>
+                        <section>
+                            <p>Letztes Update: ${formattedDateTime}</p>
+                        </section>
+                    </section>
+                    <section>
+                        <p>${doc.Beschreibung}</p>
+                    </section>
+                    <section class="right">
+                        <section>
+                            <h3>${doc.Berufsfeld}</h3>
+                        </section>
+                        <section>
+                            <h4>Plätze: ${doc.AnzahlPlaetze}</h4>
+                        </section>
+                        <section>
+                            <p>Beginn: ${formattedBeginn}</p>
+                        </section>
+                        <section class="icons">
+                            <a href="mailto:${doc.Email}" target="_blank" class="link" ${emailCheck}>
+                                &#128386;
+                            </a>
+                            <a href="tel:${doc.Tel}" target="_blank" class="link" ${telCheck}>
+                                &#128222;
+                            </a>
+                            <a href="${doc.Link}" target="_blank" class="link" ${linkCheck}>
+                                &#127760;
+                            </a>
+                        </section>
+                    </section>
+                </article>
+        `
         }
 
         // Replace the loading text with the results
@@ -310,10 +366,10 @@ function createHome(){
     return main; // Return the main element
 }
 
-// function loadHome() {
-//     const body = document.querySelector('body'); // Select the body element
-//     body.innerHTML = ''; // Clear the body content
-//     body.appendChild(createHeader()); // Append the header
-//     body.appendChild(createHome()); // Append the home content
-//     body.appendChild(createFooter()); // Append the footer
-// }
+function loadHome() {
+    const body = document.querySelector('body'); // Select the body element
+    body.innerHTML = ''; // Clear the body content
+    body.appendChild(createHeader()); // Append the header
+    body.appendChild(createHome()); // Append the home content
+    body.appendChild(createFooter()); // Append the footer
+}
