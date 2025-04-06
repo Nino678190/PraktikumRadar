@@ -20,7 +20,7 @@ function createHeader(){
         <section>
             <nav class="nav">
                 <a href="index.html">Home</a>
-                <a href="praktika.html">Praktikas</a>
+                <a href="praktika.html">praktika</a>
             </nav>
         </section>
     `; // Set the inner HTML
@@ -176,7 +176,7 @@ function displayPraktikas() {
         const main = document.createElement('main');
         main.className = 'praktikas';
         main.innerHTML = `
-        <h2>Praktikas</h2>`
+        <h2>Praktika</h2>`
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
             const updatet=doc['$updatedAt'];
@@ -246,7 +246,7 @@ function showPraktikasFirst(){
         const main = document.createElement('main');
         main.className = 'praktikas';
         main.innerHTML = `
-            <h2>Praktikas</h2>`;
+            <h2>Praktika</h2>`;
             
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
