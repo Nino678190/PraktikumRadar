@@ -313,7 +313,6 @@ function getDataFirst() {
         "67eebf7900353b1d71ca", // Your collection IDs
         [Query.limit(25), Query.orderDesc('$updatedAt')]
     ).then(function (response) {
-        console.log(response);
         return response;
     }).catch(function (error) {
         console.error("Fehler bei der Datenabfrage:", error);
