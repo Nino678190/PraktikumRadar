@@ -55,7 +55,7 @@ function showFilter() {
             <input type="date" id="beginn" name="beginn">
             <label for="Dauer">Dauer(in Tagen):</label>
             <input type="number" id="dauer" name="dauer">
-            <button type="button" onclick="displayPraktikas()">Filter</button>
+            <button type="button" onclick="displayPraktikasNeu()">Filter</button>
             <button type="button" onclick="resetForm()">Reset</button>
         </form>
     </section>
@@ -80,7 +80,18 @@ function showFilter() {
         const input = event.target;
         if (event.key === 'Enter') {
             event.preventDefault(); // Prevent form submission
-            displayPraktikas(); // Call the displayPraktikas function
+            displayPraktikasNeu(); // Call the displayPraktikas function
+        }
+    });
+
+    // Add event listener to page
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            resetForm(); // Call the resetForm function
+        }
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            displayPraktikasNeu(); // Call the displayPraktikas function
         }
     });
 
@@ -209,10 +220,6 @@ function displayPraktikas() {
             if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined) {
                 links += `<a href="${doc.Link}" target="_blank" class="link">&#127760;</a>`;
             }
-
-            console.log(doc.Link, links);
-
-
             
             // Format beginn date to DD.MM.YYYY
             let formattedBeginn = "Nicht verfügbar";
@@ -273,11 +280,9 @@ function displayPraktikas() {
                 </article>
         `
         }
-
         // Replace the loading text with the results
         body.removeChild(loadingElement);
-        body.insertBefore(main, body.lastChild);
-
+        
         // Add toggle function to window object
         window.toggleDescription = function (element) {
             const visibleText = element.previousElementSibling;
@@ -294,6 +299,8 @@ function displayPraktikas() {
                 element.innerHTML = 'Weniger anzeigen &#9650;';
             }
         };
+        console.log(main);
+        return main; // Return the main element
     }).catch(error => {
         console.error("Fehler beim Anzeigen der Praktika:", error);
         loadingElement.textContent = 'Fehler beim Laden der Daten.';
@@ -369,10 +376,6 @@ function showPraktikasFirst() {
             if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined) {
                 links += `<a href="${doc.Link}" target="_blank" class="link">&#127760;</a>`;
             }
-
-            console.log(doc.Link, links);
-
-
 
             // Format beginn date to DD.MM.YYYY
             let formattedBeginn = "Nicht verfügbar";
@@ -460,6 +463,114 @@ function showPraktikasFirst() {
     });
 }
 
+function createPraktikasElement(data) {
+    const MAX_DESCRIPTION_LENGTH = 150;
+
+    // Main-Element erstellen
+    const main = document.createElement('main');
+    main.className = 'praktikas';
+    main.innerHTML = '<h2>Praktika</h2>';
+
+    if (!data || !data.documents || data.documents.length === 0) {
+        main.innerHTML += '<p>Keine Praktika gefunden.</p>';
+        return main;
+    }
+
+    // Daten verarbeiten und anzeigen
+    data.documents.forEach(doc => {
+        const updatet = doc['$updatedAt'];
+        const date = new Date(updatet);
+        const formattedDate = date.toLocaleDateString('de-DE', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+        const formattedTime = date.toLocaleTimeString('de-DE', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        const formattedDateTime = `${formattedDate} ${formattedTime}`;
+
+        // Links erstellen
+        let links = "";
+
+        // Füge http:// zum Link hinzu, wenn nötig
+        if (doc.Link && doc.Link !== "" && !doc.Link.includes("https://") && !doc.Link.includes("http://")) {
+            doc.Link = "http://" + doc.Link;
+        }
+
+        if (doc.Email !== "" && doc.Email !== null && doc.Email !== undefined) {
+            links += `<a href="mailto:${doc.Email}" target="_blank" class="link">&#128386;</a>`;
+        }
+        if (doc.Tel !== "" && doc.Tel !== null && doc.Tel !== undefined) {
+            links += `<a href="tel:${doc.Tel}" target="_blank" class="link">&#128222;</a>`;
+        }
+        if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined) {
+            links += `<a href="${doc.Link}" target="_blank" class="link">&#127760;</a>`;
+        }
+
+        // Format beginn date to DD.MM.YYYY
+        let formattedBeginn = "Nicht verfügbar";
+        if (doc.Beginn && doc.Beginn !== "") {
+            const beginnDate = new Date(doc.Beginn);
+            formattedBeginn = beginnDate.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+
+        // Process description for partial display
+        const description = doc.Beschreibung || "Nicht verfügbar";
+        const isLongDescription = description.length > MAX_DESCRIPTION_LENGTH;
+        const visibleDescription = isLongDescription
+            ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..."
+            : description;
+
+        main.innerHTML += `
+            <article class="Praktikumsplatz">
+                <section>
+                    <section class="name">
+                        <h3>${doc.Name}</h3>
+                    </section>
+                    <section>
+                        <h5>&#128205; ${doc.Ort}</h5>
+                    </section>
+                    <section>
+                        <p>Dauer: ${doc.DauerInT}</p>
+                    </section>
+                    <section>
+                        <p>Letztes Update: ${formattedDateTime}</p>
+                    </section>
+                </section>
+                <section class="description-section">
+                    <div class="description-visible">${visibleDescription}</div>
+                    ${isLongDescription ? `
+                    <div class="description-toggle" onclick="toggleDescription(this)">Mehr anzeigen &#9660;</div>
+                    <div class="description-full" style="display: none;">
+                        <p>${description}</p>
+                    </div>` : ''}
+                </section>
+                <section class="right">
+                    <section>
+                        <h3>${doc.Berufsfeld}</h3>
+                    </section>
+                    <section>
+                        <h4>Plätze: ${doc.AnzahlPlaetze}</h4>
+                    </section>
+                    <section>
+                        <p>Beginn: ${formattedBeginn}</p>
+                    </section>
+                    <section class="icons">
+                        ${links}
+                    </section>
+                </section>
+            </article>
+        `;
+    });
+
+    return main;
+}
 
 function showPraktikas() {
     const body = document.querySelector('body'); // Select the body element
@@ -468,6 +579,51 @@ function showPraktikas() {
     body.appendChild(showFilter()); // Append the filter
     showPraktikasFirst(); // Show the praktikas
     body.appendChild(createFooter()); // Append the footer
+}
+
+async function displayPraktikasNeu() {
+    const body = document.querySelector('body');
+    body.innerHTML = '';
+    body.appendChild(createHeader());
+    body.appendChild(showFilter());
+    
+    // Lade-Element erstellen und anzeigen
+    const loadingElement = document.createElement('div');
+    loadingElement.textContent = 'Daten werden geladen...';
+    body.appendChild(loadingElement);
+    
+    // Daten asynchron laden und verarbeiten
+    await getData().then(data => {
+        // Lade-Element entfernen
+        body.removeChild(loadingElement);
+        
+        // Element erstellen und anzeigen
+        const praktikasElement = createPraktikasElement(data);
+        body.appendChild(praktikasElement);
+        
+        // Add toggle function to window object
+        window.toggleDescription = function(element) {
+            const visibleText = element.previousElementSibling;
+            const fullText = element.nextElementSibling;
+            const isExpanded = fullText.style.display !== 'none';
+            
+            if (isExpanded) {
+                visibleText.style.display = 'block';
+                fullText.style.display = 'none';
+                element.innerHTML = 'Mehr anzeigen &#9660;';
+            } else {
+                visibleText.style.display = 'none';
+                fullText.style.display = 'block';
+                element.innerHTML = 'Weniger anzeigen &#9650;';
+            }
+        };
+    })
+    .catch(error => {
+        console.error("Fehler beim Anzeigen der Praktika:", error);
+        loadingElement.textContent = 'Fehler beim Laden der Daten.';
+    });
+    
+    body.appendChild(createFooter());
 }
 
 function createHome() {
