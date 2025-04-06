@@ -310,10 +310,10 @@ function createHome(){
     return main; // Return the main element
 }
 
-function loadHome() {
-    const body = document.querySelector('body'); // Select the body element
-    body.innerHTML = ''; // Clear the body content
-    body.appendChild(createHeader()); // Append the header
-    body.appendChild(createHome()); // Append the home content
-    body.appendChild(createFooter()); // Append the footer
-}
+// function loadHome() {
+//     const body = document.querySelector('body'); // Select the body element
+//     body.innerHTML = ''; // Clear the body content
+//     body.appendChild(createHeader()); // Append the header
+//     body.appendChild(createHome()); // Append the home content
+//     body.appendChild(createFooter()); // Append the footer
+// }

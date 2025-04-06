@@ -1,5 +1,6 @@
 :root {
     --primary-color: #3498db;
+    --lighter-primary-color: #5bc0de;
     --header-color: #2ecc71;
     accent-color: var(--primary-color);
     --font-color: #333;
@@ -137,7 +138,59 @@ footer {
     gap: var(--main-margin-s);
 }
 
+.Praktikumsplatz{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 95%;
+    height: auto;
+    margin: var(--main-margin-m);
+    padding: var(--main-margin-m);
+    border-radius: var(--main-border-radius);
+    box-shadow: var(--main-box-shadow);
+    transition: var(--main-transition); 
+    flex-wrap: wrap;
+    gap: var(--main-margin-s);
+}
 
+.Praktikumsplatz>section{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    flex: 1;
+}
+
+.name{
+    display: flex;
+    align-items: flex-start;
+    text-align: start;
+    justify-content: flex-start;
+}
+
+.right>section{
+    display: flex;
+    justify-content: right !important;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--main-margin-s);
+}
+
+.link{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    width: 50px;
+    background-color: var(--lighter-primary-color);
+    border-radius: 100%;
+    height: 50px;
+}
 
 
 
