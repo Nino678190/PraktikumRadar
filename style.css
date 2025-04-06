@@ -5,11 +5,12 @@
     accent-color: var(--primary-color);
     --font-color: #333;
     --background-color: #f4f4f4;
+    --link-socials-gradient-disabled: linear-gradient(to right, #ccc, #ccc);
     --font-size: 16px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
     --main-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    --main-transition: 0.3s;
+    --main-transition: 0.7s ease;
     --main-margin-xxs: 4px;
     --main-margin-xs: 8px;
     --main-margin-s: 12px;
@@ -187,9 +188,23 @@ footer {
     align-self: center;
     align-items: center;
     width: 50px;
-    background-color: var(--lighter-primary-color);
+    border: 1px solid var(--lighter-primary-color);
     border-radius: 100%;
     height: 50px;
+}
+
+.link:not(:disabled):hover{
+    border: 1.5px solid var(--primary-color);
+}
+
+.link:not(:disabled):active {
+    border: 1.5px solid var(--primary-color);
+}
+
+.disabled{
+    display: none;
+    border: none;
+    background-color: #000;
 }
 
 

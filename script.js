@@ -190,22 +190,30 @@ function displayPraktikas() {
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
 
-            let emailCheck, telCheck, linkCheck = "";
-            if (doc.Email === "" || doc.Email === null || doc.Email === undefined) {
-                emailCheck = "disabled";
+            // Initialisiere die Variablen mit leerem Wert (nicht disabled)
+            let links ="";
+            
+            console.log(doc.Link, doc.Email, doc.Tel);
+            
+            // Füge http:// zum Link hinzu, wenn nötig
+            if (doc.Link && doc.Link !== "" && !doc.Link.includes("https://") && !doc.Link.includes("http://")) {
+                doc.Link = "http://" + doc.Link;
             }
-            if (doc.Tel === "" || doc.Tel === null || doc.Tel === undefined) {
-                telCheck = "disabled";
+
+            if (doc.Email !== "" && doc.Email !== null && doc.Email !== undefined) {
+                links += `<a href="mailto:${doc.Email}" target="_blank" class="link">&#128386;</a>`;
             }
-            if (doc.Link === "" || doc.Link === null || doc.Link === undefined) {
-                linkCheck = "disabled";
+            if (doc.Tel !== "" && doc.Tel !== null && doc.Tel !== undefined) {
+                links += `<a href="tel:${doc.Tel}" target="_blank" class="link">&#128222;</a>`;
             }
-            console.log(doc.Link, linkCheck);
             if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined) {
-                if (!doc.Link.includes("https://") && !doc.Link.includes("http://")) {
-                    doc.Link = "http://" + doc.Link;
-                }
+                links += `<a href="${doc.Link}" target="_blank" class="link">&#127760;</a>`;
             }
+
+            console.log(doc.Link, links);
+
+
+            
             // Format beginn date to DD.MM.YYYY
             let formattedBeginn = "Nicht verfügbar";
             if (doc.Beginn && doc.Beginn !== "") {
@@ -259,15 +267,7 @@ function displayPraktikas() {
                             <p>Beginn: ${formattedBeginn}</p>
                         </section>
                         <section class="icons">
-                            <a href="mailto:${doc.Email}" target="_blank" class="link" ${emailCheck}>
-                                &#128386;
-                            </a>
-                            <a href="tel:${doc.Tel}" target="_blank" class="link" ${telCheck}>
-                                &#128222;
-                            </a>
-                            <a href="${doc.Link}" target="_blank" class="link" ${linkCheck}>
-                                &#127760;
-                            </a>
+                            ${links}
                         </section>
                     </section>
                 </article>
@@ -350,22 +350,30 @@ function showPraktikasFirst() {
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
 
-            let emailCheck, telCheck, linkCheck = "";
-            if (doc.Email === "" || doc.Email === null || doc.Email === undefined) {
-                emailCheck = "disabled";
+            // Initialisiere die Variablen mit leerem Wert (nicht disabled)
+            let links = "";
+
+            console.log(doc.Link, doc.Email, doc.Tel);
+
+            // Füge http:// zum Link hinzu, wenn nötig
+            if (doc.Link && doc.Link !== "" && !doc.Link.includes("https://") && !doc.Link.includes("http://")) {
+                doc.Link = "http://" + doc.Link;
             }
-            if (doc.Tel === "" || doc.Tel === null || doc.Tel === undefined) {
-                telCheck = "disabled";
+
+            if (doc.Email !== "" && doc.Email !== null && doc.Email !== undefined) {
+                links += `<a href="mailto:${doc.Email}" target="_blank" class="link">&#128386;</a>`;
             }
-            if (doc.Link === "" || doc.Link === null || doc.Link === undefined) {
-                linkCheck = "disabled";
+            if (doc.Tel !== "" && doc.Tel !== null && doc.Tel !== undefined) {
+                links += `<a href="tel:${doc.Tel}" target="_blank" class="link">&#128222;</a>`;
             }
-            console.log(doc.Link, linkCheck);
             if (doc.Link !== "" && doc.Link !== null && doc.Link !== undefined) {
-                if (!doc.Link.includes("https://") && !doc.Link.includes("http://")) {
-                    doc.Link = "http://" + doc.Link;
-                }
+                links += `<a href="${doc.Link}" target="_blank" class="link">&#127760;</a>`;
             }
+
+            console.log(doc.Link, links);
+
+
+
             // Format beginn date to DD.MM.YYYY
             let formattedBeginn = "Nicht verfügbar";
             if (doc.Beginn && doc.Beginn !== "") {
@@ -380,8 +388,8 @@ function showPraktikasFirst() {
             // Process description for partial display
             const description = doc.Beschreibung || "Nicht verfügbar";
             const isLongDescription = description.length > MAX_DESCRIPTION_LENGTH;
-            const visibleDescription = isLongDescription 
-                ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..." 
+            const visibleDescription = isLongDescription
+                ? description.substring(0, MAX_DESCRIPTION_LENGTH) + "..."
                 : description;
 
             main.innerHTML += `
@@ -419,15 +427,7 @@ function showPraktikasFirst() {
                             <p>Beginn: ${formattedBeginn}</p>
                         </section>
                         <section class="icons">
-                            <a href="mailto:${doc.Email}" target="_blank" class="link" ${emailCheck}>
-                                &#128386;
-                            </a>
-                            <a href="tel:${doc.Tel}" target="_blank" class="link" ${telCheck}>
-                                &#128222;
-                            </a>
-                            <a href="${doc.Link}" target="_blank" class="link" ${linkCheck}>
-                                &#127760;
-                            </a>
+                            ${links}
                         </section>
                     </section>
                 </article>
