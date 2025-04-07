@@ -223,6 +223,9 @@ footer {
     form{
         flex-direction: column;
     }
+    .Praktikumsplatz{
+        flex-wrap: wrap;
+    }
 }
 
 /* Mobile portrait */
@@ -230,5 +233,7 @@ footer {
     form{
         flex-direction: column;
     }
-
+    .Praktikumsplatz{
+        flex-wrap: wrap;
+    }
 }

@@ -45,16 +45,26 @@ function showFilter() {
     <section>
         <h2>Filter</h2>
         <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            <label for="ort">Ort:</label>
-            <input type="text" id="ort" name="ort">
-            <label for="berufsfeld">Berufsfeld:</label>
-            <input type="text" id="berufsfeld" name="berufsfeld">
-            <label for="Beginn">Beginn:</label>
-            <input type="date" id="beginn" name="beginn">
-            <label for="Dauer">Dauer(in Tagen):</label>
-            <input type="number" id="dauer" name="dauer">
+            <section>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </section>
+            <section>
+                <label for="ort">Ort:</label>
+                <input type="text" id="ort" name="ort">
+            </section>
+            <section>
+                <label for="berufsfeld">Berufsfeld:</label>
+                <input type="text" id="berufsfeld" name="berufsfeld">
+            </section>
+            <section>
+                <label for="Beginn">Beginn:</label>
+                <input type="date" id="beginn" name="beginn">
+            </section>
+            <section>
+                <label for="Dauer">Dauer(in Tagen):</label>
+                <input type="number" id="dauer" name="dauer">
+            </section>
             <button type="button" onclick="displayPraktikasNeu()">Filter</button>
             <button type="button" onclick="resetForm()">Reset</button>
         </form>
