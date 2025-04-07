@@ -5,6 +5,7 @@
     accent-color: var(--primary-color);
     --font-color: #333;
     --background-color: #f4f4f4;
+    --card-bg-color: #faf7f8 ;
     --link-socials-gradient-disabled: linear-gradient(to right, #ccc, #ccc);
     --font-size: 16px;
     --main-border-radius: 5px;
@@ -27,10 +28,15 @@
     :root {
         --primary-color: #2980b9;
         --lighter-primary-color: #3498db;
+        --card-bg-color: #34495e;
         --header-color: #27ae60;
         --font-color: #ecf0f1;
         --background-color: #2c3e50;
     }
+    .logo-img{
+        filter: invert(1);
+    }
+
 }
 
 ::selection {
@@ -132,11 +138,22 @@ footer {
     align-items: center;
     width: 100%;
     height: auto;
-    margin-top: auto; /* Bleibt erhalten */
+    margin-top: auto;
     padding: var(--main-margin-m);
     background-color: var(--primary-color);
     color: white;
     text-align: center;
+}
+
+input{
+    height: 1.5em;
+    border-radius: var(--main-border-radius);
+}
+
+select{
+    height: 1.5em;
+    border-radius: 3px ;
+    cursor: pointer;
 }
 
 .home{
@@ -173,6 +190,7 @@ footer {
     transition: var(--main-transition); 
     flex-wrap: wrap;
     gap: var(--main-margin-s);
+    background-color: var(--card-bg-color);
 }
 
 .Praktikumsplatz>section{

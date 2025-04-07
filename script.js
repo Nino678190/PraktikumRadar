@@ -47,11 +47,11 @@ function showFilter() {
         <form>
             <section>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" placeholder="Name des Unternehmens">
             </section>
             <section>
                 <label for="ort">Ort:</label>
-                <input type="text" id="ort" name="ort">
+                <input type="text" id="ort" name="ort" placeholder="Ort des Praktikums">
             </section>
             <section>
                 <label for="berufsfeld">Berufsfeld:</label>
@@ -75,7 +75,7 @@ function showFilter() {
             </section>
             <section>
                 <label for="Dauer">Dauer(in Tagen):</label>
-                <input type="number" id="dauer" name="dauer">
+                <input type="number" id="dauer" name="dauer" placeholder="Dauer in Tagen">
             </section>
             <button type="button" onclick="showPraktikas()">Filter</button>
             <button type="button" onclick="resetForm()">Reset</button>
