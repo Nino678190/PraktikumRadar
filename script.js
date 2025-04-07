@@ -214,8 +214,6 @@ async function displayPraktikas() {
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
 
             let links ="";
-            
-            
             // Füge http:// zum Link hinzu, wenn nötig
             if (doc.Link && doc.Link !== "" && !doc.Link.includes("https://") && !doc.Link.includes("http://")) {
                 doc.Link = "http://" + doc.Link;
