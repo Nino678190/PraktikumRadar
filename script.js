@@ -125,6 +125,10 @@ function resetForm() {
         input.value = ''; // Clear the input values
         sessionStorage.clear(); // Remove the saved value from sessionStorage
     });
+    const select = document.querySelector('.filter select'); // Select the select element in the filter
+    if (select) {
+        select.selectedIndex = 0; // Reset the select element to the first option
+    }
 }
 
 function getFilterData() {
