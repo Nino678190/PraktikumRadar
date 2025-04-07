@@ -44,11 +44,6 @@
     color: white;
 }
 
-::-moz-selection {
-    background: var(--primary-color);
-    color: white;
-}
-
 @font-face {
     font-family: "NotoSans";
     src: url(Noto-Sans/NotoSans-Bold.ttf)
