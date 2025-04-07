@@ -193,18 +193,16 @@ footer {
     height: 50px;
 }
 
-.link:not(:disabled):hover{
+.link:hover{
     border: 1.5px solid var(--primary-color);
 }
 
-.link:not(:disabled):active {
+.link:active {
     border: 1.5px solid var(--primary-color);
 }
 
-.disabled{
-    display: none;
-    border: none;
-    background-color: #000;
+.description-toggle{
+    cursor: pointer;
 }
 
 
