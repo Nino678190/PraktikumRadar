@@ -1,9 +1,9 @@
 :root {
-    --primary-color: #3498db;
-    --header-color: #2ecc71;
+    --primary-color: #2C7873;
+    --header-color: #021C1E;
     accent-color: var(--primary-color);
-    --font-color: #333;
-    --background-color: #f4f4f4;
+    --font-color: #021C1E;
+    --background-color: #6FB98F;
     --font-size: 16px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
@@ -77,6 +77,7 @@ header{
 }
 
 .filter{
+    text-align: center;
     height: fit-content !important;
 }
 
@@ -117,9 +118,7 @@ footer {
     text-align: center;
 }
 
-.home{
-    padding: var(--main-margin-s);
-}
+
 
 .praktikum{
     display: flex;
@@ -163,4 +162,36 @@ footer {
         flex-direction: column;
     }
 
+}
+
+#home-content.content {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Stil für die Startseite */
+.home{
+    padding: var(--main-margin-s);
+}
+
+.home h1{ /* Stil für die Überschrift der Startseite */
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+}
+
+.kontakt h1 { /* Stil für die Überschrift der Kontaktseite */
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+}
+
+.kontakt p { /* Stil für den Text der Kontaktseite */
+    text-align: justify;
+    margin-left: 150px;
+    font-size: 25px;
+    color: black;
 }

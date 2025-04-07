@@ -13,14 +13,15 @@ function createHeader(){
     header.className = 'header'; // Set the class name
     header.innerHTML = `
         <section>
-            <a href="index.html" class="logo">
+            <a href="homepage.html" class="logo">
                 <img src="images/icons8-calendar-100.png" alt="Logo" class="logo-img">
             </a>
         </section>
         <section>
             <nav class="nav">
-                <a href="index.html">Home</a>
-                <a href="praktika.html">praktika</a>
+                <a href="homepage.html">Startseite</a>
+                <a href="praktika.html">Praktika</a>
+                <a href = "kontakt.html">Kontakt</a>
             </nav>
         </section>
     `; // Set the inner HTML
@@ -53,8 +54,8 @@ function showFilter(){
             <input type="text" id="berufsfeld" name="berufsfeld">
             <label for="Beginn">Beginn:</label>
             <input type="date" id="beginn" name="beginn">
-            <label for="Dauer">Dauer(in Tagen):</label>
-            <input type="number" id="dauer" name="dauer">
+            <label for="Dauer">Dauer (in Tagen):</label>
+            <input type="number" id="dauer" name="dauer" min = "1">
             <button type="button" onclick="displayPraktikas()">Filter</button>
             <button type="button" onclick="resetForm()">Reset</button>
         </form>
@@ -298,22 +299,43 @@ function showPraktikas(){
     body.appendChild(createFooter()); // Append the footer
 }
 
-function createHome(){
+function createHome(){ // erstellt die Startseite
     const main = document.createElement('main'); // Create a main element
     main.className = 'home';
     main.innerHTML = `
     <section>
         <h1>Welcome to the Home Page</h1>
-        <p>This is the home page content.</p>
+        <p>Test</p>
     </section>
     `; // Set the inner HTML
     return main; // Return the main element
 }
 
-function loadHome() {
+function loadHome() { // ladet die Startseite
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(createHome()); // Append the home content
+    body.appendChild(createFooter()); // Append the footer
+}
+
+function createKontakt(){ // erstellt die Kontaktseite
+    const main = document.createElement('main'); // Create a main element
+    main.className = 'kontakt';
+    main.innerHTML = `
+    <section>
+        <h1>Ansprechpartner</h1>
+        <p><u><strong>Koordinator Berufsorientierung Werner von Siemens Gymnasium:</strong></u> Urs Dudzus </p>
+        <p><u><strong>E-Mail:</strong></u> dudzus@berufsorientierung-wvs.de</p>
+    </section>
+    `; // Set the inner HTML
+    return main; // Return the main element
+}
+
+function loadKontakt() { // ladet die Kontaktseite
+    const body = document.querySelector('body'); // Select the body element
+    body.innerHTML = ''; // Clear the body content
+    body.appendChild(createHeader()); // Append the header
+    body.appendChild(createKontakt()); // Append the home content
     body.appendChild(createFooter()); // Append the footer
 }
