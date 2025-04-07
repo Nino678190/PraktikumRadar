@@ -341,10 +341,62 @@ function createHome() {
     const main = document.createElement('main'); // Create a main element
     main.className = 'home';
     main.innerHTML = `
-    <section>
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the home page content.</p>
-    </section>
+    <main>
+        <h1>Willkommen bei PraktikumRadar</h1>
+
+        <p>
+        PraktikumRadar ist deine Anlaufstelle, wenn du nach einem passenden Praktikumsplatz suchst.
+        Egal, ob du gerade noch zur Schule gehst oder schon erste Berufserfahrungen sammeln möchtest –
+        bei uns findest du eine Vielzahl an Angeboten aus ganz unterschiedlichen Bereichen.
+        </p>
+
+        <p>
+        Die Praktikumsplätze werden von engagierten Unternehmen, Organisationen und Institutionen bereitgestellt,
+        die jungen Menschen wie dir einen Einblick in den Berufsalltag ermöglichen wollen. Du kannst dich in Ruhe umsehen,
+        verschiedene Berufsfelder entdecken und herausfinden, was zu dir passt.
+        </p>
+
+        <h2>Was bietet dir diese Seite?</h2>
+
+        <p>
+        Wir bieten dir eine wachsende Sammlung an Praktikumsangeboten – sortiert nach Berufsfeldern und Regionen.
+        Zu jedem Eintrag findest du eine Beschreibung, Informationen zur Dauer, zum Ort und natürlich die Kontaktdaten.
+        So kannst du dich direkt beim jeweiligen Unternehmen bewerben – ganz unkompliziert.
+        </p>
+
+        <p>
+        <b>Wichtig:</b> Diese Plattform dient ausschließlich zur Orientierung und Information.
+        Eine Bewerbung ist nicht über diese Seite möglich. Bitte nimm direkt Kontakt zum Anbieter des Praktikums auf.
+        </p>
+
+        <h2>Für Unternehmen</h2>
+
+        <p>
+        Sie möchten jungen Menschen die Möglichkeit geben, erste Erfahrungen in Ihrem Berufsfeld zu sammeln?
+        Dann freuen wir uns, wenn Sie Ihr Praktikumsangebot bei uns einreichen!
+        Bitte senden Sie uns dazu eine E-Mail mit folgenden Informationen:
+        </p>
+
+        <ul>
+        <li>Name und Beschreibung Ihres Unternehmens</li>
+        <li>Ort und Zeitraum des Praktikums</li>
+        <li>Eine kurze Beschreibung der Aufgaben</li>
+        <li>Kontaktdaten für Rückfragen und Bewerbungen</li>
+        </ul>
+
+        <p>
+        Schicken Sie Ihre Angaben bitte an: <strong>PraktikumRadar@example.org</strong>
+        </p>
+
+        <h2>Gemeinsam Perspektiven schaffen</h2>
+
+        <p>
+        Ein Praktikum kann der erste Schritt in die berufliche Zukunft sein.
+        Wir möchten Schüler:innen, Studierenden und anderen Interessierten helfen, diesen Schritt mit möglichst viel Orientierung und Unterstützung zu gehen.
+        Schön, dass du hier bist!
+        </p>
+
+    </main>
     `; // Set the inner HTML
     return main; // Return the main element
 }

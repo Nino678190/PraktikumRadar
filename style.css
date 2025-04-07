@@ -23,6 +23,26 @@
     --main-margin-xxxxxl: 100px;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #2980b9;
+        --lighter-primary-color: #3498db;
+        --header-color: #27ae60;
+        --font-color: #ecf0f1;
+        --background-color: #2c3e50;
+    }
+}
+
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: white;
+}
+
 @font-face {
     font-family: "NotoSans";
     src: url(Noto-Sans/NotoSans-Bold.ttf)
