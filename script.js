@@ -97,15 +97,6 @@ function showFilter() {
         });
     }
 
-    document.getElementById("berufsfeld").addEventListener("change", function () {
-        const options = this.options;
-        for(let i = 0; i < options.length; i++) {
-            if(options[i].value === "") {
-                options[i].disabled = true;
-                break;
-            }
-        }
-    });
     // Add event listener to the form input to enable the button
     filter.querySelector('form').addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
@@ -160,7 +151,6 @@ function getData() {
     const berufsfeld = filter.berufsfeld; // Get the berufsfeld from the filter
     const beginn = filter.beginn; // Get the beginn from the filter
     const dauer = filter.dauer; // Get the dauer from the filter
-    console.log(beginn, dauer);
     // Korrigiere die Suche: Stelle sicher, dass der Parameter ein String ist
     if (name) queries.push(Query.search('Name', String(name)));
     if (ort) queries.push(Query.search('Ort', String(ort)));
@@ -177,7 +167,6 @@ function getData() {
         "67eebf7900353b1d71ca", // Your collection IDs
         queries
     ).then(function (response) {
-        console.log(response);
         return response;
     }).catch(function (error) {
         console.error("Fehler bei der Datenabfrage:", error);
@@ -320,7 +309,6 @@ async function displayPraktikas() {
                 element.innerHTML = 'Weniger anzeigen &#9650;';
             }
         };
-        console.log(main);
         body.appendChild(main); // Append the main element to the body
         return main; // Return the main element
     }).catch(error => {
@@ -335,9 +323,16 @@ async function showPraktikas() {
     body.appendChild(createHeader()); // Append the header
     body.appendChild(showFilter()); // Append the filter
 
-    // Statt direktem Append, lassen wir displayPraktikas seine Resultate selbst einfügen
+    document.getElementById("berufsfeld").addEventListener("change", function () {
+        const options = this.options;
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value === "") {
+                options[i].disabled = true;
+                break;
+            }
+        }
+    });
     await displayPraktikas(); // Die Funktion fügt ihre Ergebnisse selbst ein
-    console.log("Praktika angezeigt");
     body.appendChild(createFooter()); // Append the footer
 }
 function createHome() {
