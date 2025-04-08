@@ -197,9 +197,9 @@ function displayPraktikas() {
                 <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
                 <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
                 <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
-                <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
-                <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
+                <p>Email: <a href="mailto:${doc.Email}">Email</a></p>
+                <p>Telefon: <a href="tel:${doc.Tel}">Telefon</a></p>
+                <p>Link: <a href="${doc.Link}</p>
                 <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
                 <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
                 <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
