@@ -32,7 +32,7 @@ function createFooter(){
     footer.className = 'footer'; // Set the class name
     footer.innerHTML = `
     <section>
-        <p>All rights reserved &copy; ${new Date().getFullYear()} by <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nino678190</a></p>
+        <p>All rights reserved &copy; ${new Date().getFullYear()} by <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a></p>
     </section>
     `; // Set the inner HTML
     return footer; // Return the footer element
