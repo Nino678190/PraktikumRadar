@@ -3,7 +3,7 @@ const client = new Client(); // Erstellen Sie eine neue Instanz des Client-Objek
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Für Appwrite Cloud
-    .setProject('67eebf2b001a3c98c38a') // Your project ID
+    .setProject('67f4d87b0029b839d132') // Your project ID
 ;
 
 const databases = new Databases(client); // Create a new instance of the Databases class
@@ -133,8 +133,8 @@ function getData() {
     queries.push(Query.orderDesc('$updatedAt')); 
     
     return databases.listDocuments(
-        "67eebf55000c4fcc2eac", // Your database ID
-        "67eebf7900353b1d71ca", // Your collection IDs
+        "67f4d89c002b3b4ebf72", // Your database ID
+        "67f4d8ad00252f1c38a7", // Your collection IDs
         queries
     ).then(function (response) {
         console.log(response);
@@ -217,8 +217,8 @@ function displayPraktikas() {
 
 function getDataFirst() {
     return databases.listDocuments(
-        "67eebf55000c4fcc2eac", // Your database ID
-        "67eebf7900353b1d71ca", // Your collection IDs
+        "67f4d89c002b3b4ebf72", // Your database ID
+        "67f4d8ad00252f1c38a7", // Your collection IDs
         [Query.limit(25), Query.orderDesc('$updatedAt')]
     ).then(function (response) {
         console.log(response);
