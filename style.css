@@ -4,7 +4,7 @@
     accent-color: var(--primary-color);
     --font-color: #021C1E;
     --background-color: #6FB98F;
-    --font-size: 16px;
+    --font-size: 15px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
     --main-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -102,7 +102,7 @@ form{
 button{
     font-family: "NotoSans";  
     font-size: var(--font-size);
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 footer {
@@ -135,10 +135,6 @@ footer {
     flex-wrap: wrap;
     gap: var(--main-margin-s);
 }
-
-
-
-
 
 /* Large Desktop, TV, etc. */
 @media screen and (min-width: 1200px) {}

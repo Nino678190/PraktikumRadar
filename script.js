@@ -127,7 +127,7 @@ function getData() {
     if (berufsfeld) queries.push(Query.search('Berufsfeld', String(berufsfeld))); 
     
     if (beginn) queries.push(Query.lessThanEqual('Beginn', beginn)); 
-    if (dauer) queries.push(Query.lessThanEqual('Dauer', parseInt(dauer))); 
+    if (dauer) queries.push(Query.lessThanEqual('Dauer', parseInt(dauer)));
     
     queries.push(Query.limit(25)); 
     queries.push(Query.orderDesc('$updatedAt')); 
@@ -145,7 +145,7 @@ function getData() {
     });
 }
 
-function displayPraktikasEndgueltig(elements){
+function displayPraktikaEndgueltig(elements){
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
@@ -200,7 +200,7 @@ function displayPraktikas() {
                 <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
                 <p>Email: <a href="mailto:${doc.Email}">Email</a></p>
                 <p>Telefon: <a href="tel:${doc.Tel}">Telefon</a></p>
-                <p>Link: <a href="${doc.Link}</p>
+                <p>Link: <a href="${doc.Link}>Link</a></p>
                 <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
                 <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
                 <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
@@ -229,7 +229,7 @@ function getDataFirst() {
     });
 }
 
-function showPraktikasFirst(){
+function showPraktikaFirst(){
     const body = document.querySelector('body'); // Select the body element
     
     // Create loading element
@@ -265,17 +265,17 @@ function showPraktikasFirst(){
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
                 <section class="praktikum">
-                    <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
-                    <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
-                    <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
-                    <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                    <p>Email: ${doc.Email || "Nicht verfügbar"}</p>
-                    <p>Telefon: ${doc.Tel || "Nicht verfügbar"}</p>
-                    <p>Link: ${doc.Link || "Nicht verfügbar"}</p>
-                    <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
-                    <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
-                    <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
-                    <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
+                    <p><u>Name:</u> ${doc.Name || "Nicht verfügbar"}</p>
+                    <p><u>Ort:</u> ${doc.Ort || "Nicht verfügbar"}</p>
+                    <p><u>Beschreibung:</u> ${doc.Beschreibung || "Nicht verfügbar"}</p>
+                    <p><u>Berufsfeld:</u> ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                    <p><u>Email:</u> ${doc.Email || "Nicht verfügbar"}</p>
+                    <p><u>Telefon:</u> ${doc.Tel || "Nicht verfügbar"}</p>
+                    <p><u>Link:</u> ${doc.Link || "Nicht verfügbar"}</p>
+                    <p><u>Verfügbare</u> Plätze:< ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                    <p><u>Dauer:</u> ${doc.Dauer || "Nicht verfügbar"}</p>
+                    <p><u>Beginn:</u> ${doc.Beginn || "Nicht verfügbar"}</p>
+                    <p><u>Zuletzt geupdatet:</u> ${formattedDateTime || "Nicht verfügbar"}</p>
                 </section>
                 `;
         }
@@ -295,7 +295,7 @@ function showPraktikas(){
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(showFilter()); // Append the filter
-    showPraktikasFirst(); // Show the praktikas
+    showPraktikaFirst(); // Show the praktika
     body.appendChild(createFooter()); // Append the footer
 }
 
