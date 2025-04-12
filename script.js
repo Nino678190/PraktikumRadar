@@ -14,7 +14,7 @@ function createHeader(){
     header.innerHTML = `
         <section>
             <a href="homepage.html" class="logo">
-                <img src="images/icons8-calendar-100.png" alt="Logo" class="logo-img">
+                <img src="images/logo.png" alt="Logo" class="logo-img">
             </a>
         </section>
         <section>
@@ -304,8 +304,8 @@ function createHome(){ // erstellt die Startseite
     main.className = 'home';
     main.innerHTML = `
     <section>
-        <h1>Welcome to the Home Page</h1>
-        <p>Test</p>
+        <h1>Willkommen beim Praktikumsradar</h1>
+        <p>Hier finden Sie den geeigneten Praktikumsplatz für Sie</p>
     </section>
     `; // Set the inner HTML
     return main; // Return the main element

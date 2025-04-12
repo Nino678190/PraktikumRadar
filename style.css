@@ -1,9 +1,15 @@
 :root {
-    --primary-color: #2C7873;
-    --header-color: #021C1E;
-    accent-color: var(--primary-color);
-    --font-color: #021C1E;
-    --background-color: #6FB98F;
+    /* Farben
+    Background: #151923
+    Text: #66FCF1
+    Header & Footer: #202833
+    Extra: #45A29F
+    */
+    --primary-color: #202833;
+    --header-color: #202833;
+    accent-color: #202833;
+    --font-color: #66FCF1;
+    --background-color: #151923;
     --font-size: 15px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
@@ -72,8 +78,8 @@ header{
 }
 
 .logo-img{
-    width: 50px;
-    height: 50px;
+    width: 58px;
+    height: 66px;
 }
 
 .filter{
@@ -175,7 +181,7 @@ footer {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    color: black;
+    color: var(--font-color);
 }
 
 .kontakt h1 { /* Stil für die Überschrift der Kontaktseite */
