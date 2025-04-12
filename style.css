@@ -5,11 +5,11 @@
     Header & Footer: #202833
     Extra: #45A29F
     */
-    --primary-color: #202833;
-    --header-color: #202833;
-    accent-color: #202833;
+    --primary-color: #151923;
+    --header-color: #151923;
+    accent-color: #151923;
     --font-color: #66FCF1;
-    --background-color: #151923;
+    --background-color: #202833;
     --font-size: 15px;
     --main-border-radius: 5px;
     --big-border-radius: 20px;
@@ -35,7 +35,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "NotoSans";    
+    font-family: "NotoSans", serif;
     z-index: -1;
     scroll-behavior: smooth;
     min-height: 100vh;
@@ -75,6 +75,7 @@ header{
     transition: var(--main-transition); 
     flex-wrap: wrap;
     gap: var(--main-margin-s);
+    background-color: #151923;
 }
 
 .logo-img{
@@ -106,7 +107,7 @@ form{
 }
 
 button{
-    font-family: "NotoSans";  
+    font-family: "NotoSans", serif;
     font-size: var(--font-size);
     font-weight: bold;
 }
@@ -128,9 +129,10 @@ footer {
 
 .praktikum{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    /*flex-direction: row;*/
+    justify-content: left;
     align-items: center;
+    text-align: left;
     width: 95%;
     height: auto;
     margin: var(--main-margin-m);
@@ -140,6 +142,8 @@ footer {
     transition: var(--main-transition); 
     flex-wrap: wrap;
     gap: var(--main-margin-s);
+    background-color: #151923;
+    font-size: 20px
 }
 
 /* Large Desktop, TV, etc. */
@@ -188,12 +192,12 @@ footer {
     text-align: center;
     font-size: 50px;
     font-weight: bold;
-    color: black;
+    color: var(--font-color);
 }
 
 .kontakt p { /* Stil für den Text der Kontaktseite */
     text-align: justify;
     margin-left: 150px;
     font-size: 25px;
-    color: black;
+    color: white;
 }

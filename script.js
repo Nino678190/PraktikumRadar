@@ -19,8 +19,8 @@ function createHeader(){
         </section>
         <section>
             <nav class="nav">
-                <a href="homepage.html">Startseite</a>
-                <a href="praktika.html">Praktika</a>
+                <a href = "homepage.html">Startseite</a>
+                <a href = "praktika.html">Praktika</a>
                 <a href = "kontakt.html">Kontakt</a>
             </nav>
         </section>
@@ -33,7 +33,8 @@ function createFooter(){
     footer.className = 'footer'; // Set the class name
     footer.innerHTML = `
     <section>
-        <p>All rights reserved &copy; ${new Date().getFullYear()} by <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a></p>
+        <p>Diese Website wurde im Rahmen eines Schulprojektes des <a class = standart href="https://www.siemens-gymnasium-berlin.de/">Werner-von-Siemens Gymnasiums Berlin</a> von einer Schülergruppe und der Hilfe von <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> entwickelt</p>
+        <p>Alle Rechte vorbehalten &copy; ${new Date().getFullYear()} bei der Schülergruppe des Werner-von-Siemens Gymnasiums und <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> </p>
     </section>
     `; // Set the inner HTML
     return footer; // Return the footer element
@@ -44,19 +45,19 @@ function showFilter(){
     filter.className = 'filter'; // Set the class name
     filter.innerHTML = `
     <section>
-        <h2>Filter</h2>
+        <h2>Filter für verfügbare Praktika</h2>
         <form>
-            <label for="name">Name:</label>
+            <label for="name">Unternehmensbezeichnung:</label>
             <input type="text" id="name" name="name">
-            <label for="ort">Ort:</label>
+            <label for="stadt">Stadt:</label>
             <input type="text" id="ort" name="ort">
             <label for="berufsfeld">Berufsfeld:</label>
-            <input type="text" id="berufsfeld" name="berufsfeld">
+            <input type="" id="berufsfeld" name="berufsfeld">
             <label for="Beginn">Beginn:</label>
             <input type="date" id="beginn" name="beginn">
             <label for="Dauer">Dauer (in Tagen):</label>
             <input type="number" id="dauer" name="dauer" min = "1">
-            <button type="button" onclick="displayPraktikas()">Filter</button>
+            <button type="button" onclick="displayPraktika()">Filter</button>
             <button type="button" onclick="resetForm()">Reset</button>
         </form>
     </section>
@@ -81,7 +82,7 @@ function showFilter(){
         const input = event.target;
         if (event.key === 'Enter') {
             event.preventDefault(); // Prevent form submission
-            displayPraktikas(); // Call the displayPraktikas function
+            displayPraktika(); // Call the displayPraktika function
         }
     });
 
@@ -154,26 +155,25 @@ function displayPraktikaEndgueltig(elements){
     body.appendChild(createFooter()); // Append the footer
 }
 
-
-function displayPraktikas() {
+function displayPraktika() {
     // Erzeugte vor dem Anzeigen ein Lade-Element
     const loadingElement = document.createElement('div');
     loadingElement.textContent = 'Daten werden geladen...';
-    
+
     const body = document.querySelector('body');
     body.innerHTML = '';
     body.appendChild(createHeader());
     body.appendChild(showFilter());
     body.appendChild(loadingElement);
     body.appendChild(createFooter());
-    
+
     // Daten abrufen und anzeigen
     getData().then(data => {
         if (!data || !data.documents || data.documents.length === 0) {
             loadingElement.textContent = 'Keine Praktika gefunden.';
             return;
         }
-        
+
         const main = document.createElement('main');
         main.className = 'praktikas';
         main.innerHTML = `
@@ -198,9 +198,9 @@ function displayPraktikas() {
                 <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
                 <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
                 <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                <p>Email: <a href="mailto:${doc.Email}">Email</a></p>
-                <p>Telefon: <a href="tel:${doc.Tel}">Telefon</a></p>
-                <p>Link: <a href="${doc.Link}>Link</a></p>
+                <p>Email: <a href="mailto:${doc.Email}"> ${doc.Email || "Nicht Verfügbar"}</a></p>
+                <p>Telefon: <a class = "normal" href="tel:${doc.Tel}"> ${doc. Tel || "Nicht Verfügbar"}</a></p>
+                <p>Link: <a href="${doc.Link}"> ${doc.Link || "Nicht Verfügbar"}</a></p>
                 <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
                 <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
                 <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
@@ -208,7 +208,7 @@ function displayPraktikas() {
             </section>
             `;
         }
-        
+
         // Ersetze den Loading-Text mit den Ergebnissen
         body.removeChild(loadingElement);
         body.insertBefore(main, body.lastChild);
@@ -231,24 +231,24 @@ function getDataFirst() {
 
 function showPraktikaFirst(){
     const body = document.querySelector('body'); // Select the body element
-    
+
     // Create loading element
     const loadingElement = document.createElement('div');
     loadingElement.textContent = 'Daten werden geladen...';
     body.appendChild(loadingElement);
-    
+
     // Get the data and process it asynchronously
     getDataFirst().then(data => {
         if (!data || !data.documents || data.documents.length === 0) {
             loadingElement.textContent = 'Keine Praktika gefunden.';
             return;
         }
-        
+
         const main = document.createElement('main');
         main.className = 'praktikas';
         main.innerHTML = `
-            <h2>Praktika</h2>`;
-            
+            <h2 style = "text-align: center">Ergebnisse für Praktika</h2>`;
+
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
             const updatet = doc['$updatedAt'];
@@ -264,20 +264,20 @@ function showPraktikaFirst(){
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
-                <section class="praktikum">
-                    <p><u>Name:</u> ${doc.Name || "Nicht verfügbar"}</p>
-                    <p><u>Ort:</u> ${doc.Ort || "Nicht verfügbar"}</p>
-                    <p><u>Beschreibung:</u> ${doc.Beschreibung || "Nicht verfügbar"}</p>
-                    <p><u>Berufsfeld:</u> ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                    <p><u>Email:</u> ${doc.Email || "Nicht verfügbar"}</p>
-                    <p><u>Telefon:</u> ${doc.Tel || "Nicht verfügbar"}</p>
-                    <p><u>Link:</u> ${doc.Link || "Nicht verfügbar"}</p>
-                    <p><u>Verfügbare</u> Plätze:< ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
-                    <p><u>Dauer:</u> ${doc.Dauer || "Nicht verfügbar"}</p>
-                    <p><u>Beginn:</u> ${doc.Beginn || "Nicht verfügbar"}</p>
-                    <p><u>Zuletzt geupdatet:</u> ${formattedDateTime || "Nicht verfügbar"}</p>
+                <section class = "praktikum">
+                    <h style = "text-align: center">${doc.Name}</h>
+                    <p style = "color: #66FCF1">Adresse: </p><p><a style ="color: white" href = "https://www.google.de/maps/place/${doc.Ort}"><u>${doc.Ort || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">Beschreibung der Tätigkeit:</p><p style = "color: white"> ${doc.Beschreibung || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">Berufsfeld:</p><p style = "color: white"> ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">Email: </p><p><a style = "color: white" href ="mailto:${doc.Email}"><u>${doc.Email || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">Telefon: </p><p><a style = "color: white" href ="tel:${doc.Tel}"><u>${doc.Tel || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">Link: </p><p> <a style="color: white" href= "${doc.Link}"><u>${doc.Link || "Nicht verführbar"}</u></a></p>
+                    <p style = "color: #66FCF1">Verfügbare Plätze: </p><p style = "color: white">${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">Dauer: </p><p style = "color: white"> ${doc.Dauer || "Nicht verführbar"}</p>    
+                    <p style = "color: #66FCF1">Beginn: </p><p style = "color: white"> ${doc.Beginn || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">Letztes Update: </p><p style = "color: white"> ${formattedDateTime || "Nicht verfügbar"}</p>
                 </section>
-                `;
+            `;
         }
 
         // Replace the loading text with the results
@@ -290,7 +290,7 @@ function showPraktikaFirst(){
 }
 
 
-function showPraktikas(){
+function showPraktika(){
     const body = document.querySelector('body'); // Select the body element
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
