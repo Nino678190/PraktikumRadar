@@ -14,7 +14,7 @@ function createHeader(){
     header.innerHTML = `
         <section>
             <a href="homepage.html" class="logo">
-                <img src="images/logo.png" alt="Logo" class="logo-img">
+                <p><img src="images/logo.png" alt="Logo" class="logo-img"> Praktikumsradar</p>
             </a>
         </section>
         <section>
@@ -22,6 +22,7 @@ function createHeader(){
                 <a href = "homepage.html">Startseite</a>
                 <a href = "praktika.html">Praktika</a>
                 <a href = "kontakt.html">Kontakt</a>
+                <a href = "bewerben.html">Bewerben</a>
             </nav>
         </section>
     `; // Set the inner HTML
@@ -33,8 +34,8 @@ function createFooter(){
     footer.className = 'footer'; // Set the class name
     footer.innerHTML = `
     <section>
-        <p>Diese Website wurde im Rahmen eines Schulprojektes des <a class = standart href="https://www.siemens-gymnasium-berlin.de/">Werner-von-Siemens Gymnasiums Berlin</a> von einer Schülergruppe und der Hilfe von <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> entwickelt</p>
-        <p>Alle Rechte vorbehalten &copy; ${new Date().getFullYear()} bei der Schülergruppe des Werner-von-Siemens Gymnasiums und <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> </p>
+        <p style = "font-size: 10px">Diese Website wurde im Rahmen eines Schulprojektes des <a class = standart href="https://www.siemens-gymnasium-berlin.de/">Werner-von-Siemens Gymnasiums Berlin</a> von einer Schülergruppe und der Hilfe von <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> entwickelt</p>
+        <p style = "font-size: 10px">Alle Rechte vorbehalten &copy; ${new Date().getFullYear()} bei der Schülergruppe des Werner-von-Siemens Gymnasiums und <a class="standart" href="https://nino678190.github.io/nic-tolksdorf/">Nic Tolksdorf</a> </p>
     </section>
     `; // Set the inner HTML
     return footer; // Return the footer element
@@ -196,8 +197,8 @@ function displayPraktika() {
             <section class="praktikum">
                 <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
                 <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
-                <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
                 <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
                 <p>Email: <a href="mailto:${doc.Email}"> ${doc.Email || "Nicht Verfügbar"}</a></p>
                 <p>Telefon: <a class = "normal" href="tel:${doc.Tel}"> ${doc. Tel || "Nicht Verfügbar"}</a></p>
                 <p>Link: <a href="${doc.Link}"> ${doc.Link || "Nicht Verfügbar"}</a></p>
@@ -265,10 +266,10 @@ function showPraktikaFirst(){
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
                 <section class = "praktikum">
-                    <h style = "text-align: center">${doc.Name}</h>
+                    <p style = "text-align: center">Unternehmensname:</p><p style = "color: white"> ${doc.Name}</p>
                     <p style = "color: #66FCF1">Adresse: </p><p><a style ="color: white" href = "https://www.google.de/maps/place/${doc.Ort}"><u>${doc.Ort || "Nicht verfügbar"}</u></a></p>
-                    <p style = "color: #66FCF1">Beschreibung der Tätigkeit:</p><p style = "color: white"> ${doc.Beschreibung || "Nicht verfügbar"}</p>
                     <p style = "color: #66FCF1">Berufsfeld:</p><p style = "color: white"> ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">Beschreibung der Tätigkeit:</p><p style = "color: white"> ${doc.Beschreibung || "Nicht verfügbar"}</p>
                     <p style = "color: #66FCF1">Email: </p><p><a style = "color: white" href ="mailto:${doc.Email}"><u>${doc.Email || "Nicht verfügbar"}</u></a></p>
                     <p style = "color: #66FCF1">Telefon: </p><p><a style = "color: white" href ="tel:${doc.Tel}"><u>${doc.Tel || "Nicht verfügbar"}</u></a></p>
                     <p style = "color: #66FCF1">Link: </p><p> <a style="color: white" href= "${doc.Link}"><u>${doc.Link || "Nicht verführbar"}</u></a></p>
@@ -325,8 +326,8 @@ function createKontakt(){ // erstellt die Kontaktseite
     main.innerHTML = `
     <section>
         <h1>Ansprechpartner</h1>
-        <p><u><strong>Koordinator Berufsorientierung Werner von Siemens Gymnasium:</strong></u> Urs Dudzus </p>
-        <p><u><strong>E-Mail:</strong></u> dudzus@berufsorientierung-wvs.de</p>
+        <p><strong>Koordinator Berufsorientierung Werner von Siemens Gymnasium:</strong> Urs Dudzus </p>
+        <p><strong>E-Mail:</strong> <a class = standart href = "mailto:dudzus@berufsorientierung-wvs.de"> dudzus@berufsorientierung-wvs.de</a> </p>
     </section>
     `; // Set the inner HTML
     return main; // Return the main element
@@ -337,5 +338,37 @@ function loadKontakt() { // ladet die Kontaktseite
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(createKontakt()); // Append the home content
+    body.appendChild(createFooter()); // Append the footer
+}
+
+function createBewerben(){ // erstellt die Kontaktseite
+    const main = document.createElement('main'); // Create a main element
+    main.className = 'bewerben';
+    main.innerHTML = `
+    <section>
+        <h1>Bewerbungsverfahren zum Ausstellen eines Praktikums auf Praktikumsradar</h1>
+        <p>Schreiben sie eine E-Mail an <a class = standart href = "mailto:praktikumsstellenwvsberlin@gmail.com">praktikumsstellenwvsberlin@gmail.com</a> mit folgenden Informationen: </p>
+        <ul>
+            <li>Name des Unternehmens</li>
+            <li>Adresse (Postleitzahl + Stadt, Straße und Hausnummer)</li>
+            <li>Berufsfeld</li> 
+            <li>Beschreibung der Tätigkeit</li>
+            <li>E-Mail</li>
+            <li>Telefonnummer</li>
+            <li>Linke zur Website (optional)</li>
+            <li>Verfügbare Plätze (optional)</li>
+            <li>Dauer (optional)</li>
+            <li>Beginn (optional)</li>
+        </ul>
+    </section>
+    `; // Set the inner HTML
+    return main; // Return the main element
+}
+
+function loadBewerben() { // ladet die Bewerbungsseite
+    const body = document.querySelector('body'); // Select the body element
+    body.innerHTML = ''; // Clear the body content
+    body.appendChild(createHeader()); // Append the header
+    body.appendChild(createBewerben()); // Append the Bewerbungsseite
     body.appendChild(createFooter()); // Append the footer
 }
