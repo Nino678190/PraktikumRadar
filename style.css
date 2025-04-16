@@ -67,7 +67,7 @@ header{
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    height: auto;
+    height: 75px;
     margin: var(--main-margin-xs);
     padding: var(--main-margin-l);
     border-radius: var(--main-border-radius);
@@ -221,3 +221,16 @@ footer {
     font-size: 25px;
     color: white;
 }
+
+.header p {
+    font-size: 20px;
+    position: relative;
+    top: -70px;
+    right: -75px;
+}
+.header nav {
+    font-size: 20px;
+    position: relative;
+    top: -30px;
+}
+
