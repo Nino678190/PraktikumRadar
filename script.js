@@ -306,8 +306,11 @@ function createHome(){ // erstellt die Startseite
     main.className = 'home';
     main.innerHTML = `
     <section>
-        <h1>Willkommen beim Praktikumsradar</h1>
-        <p>Hier finden Sie den geeigneten Praktikumsplatz für Sie</p>
+        <h1>Willkommen bei Praktikumsradar – Dein Kompass fürs Praktikum!</h1>
+        <p>Du suchst ein spannendes Praktikum, das wirklich zu dir passt?<br> Dann bist du hier genau richtig!<br>
+        Praktikumsradar hilft dir dabei, den Überblick zu behalten und gezielt die besten Praktikumsplätze zu finden – ob für Schule, Studium oder den ersten Schritt ins Berufsleben.
+        Mit uns entdeckst du nicht nur Möglichkeiten, sondern Chancen.<br>
+        Starte jetzt deine Suche und finde dein nächstes Abenteuer!</p>
     </section>
     `; // Set the inner HTML
     return main; // Return the main element
