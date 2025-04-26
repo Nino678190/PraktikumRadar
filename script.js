@@ -153,7 +153,7 @@ function displayPraktikaEndgueltig(elements){
     body.innerHTML = ''; // Clear the body content
     body.appendChild(createHeader()); // Append the header
     body.appendChild(showFilter()); // Append the filter
-    body.appendChild(elements); // Append the praktikas content
+    body.appendChild(elements); // Append the praktika content
     body.appendChild(createFooter()); // Append the footer
 }
 
@@ -195,19 +195,19 @@ function displayPraktika() {
             });
             const formattedDateTime = `${formattedDate} ${formattedTime}`;
             main.innerHTML += `
-            <section class="praktikum">
-                <p>Name: ${doc.Name || "Nicht verfügbar"}</p>
-                <p>Ort: ${doc.Ort || "Nicht verfügbar"}</p>
-                <p>Berufsfeld: ${doc.Berufsfeld || "Nicht verfügbar"}</p>
-                <p>Beschreibung: ${doc.Beschreibung || "Nicht verfügbar"}</p>
-                <p>Email: <a href="mailto:${doc.Email}"> ${doc.Email || "Nicht Verfügbar"}</a></p>
-                <p>Telefon: <a class = "normal" href="tel:${doc.Tel}"> ${doc. Tel || "Nicht Verfügbar"}</a></p>
-                <p>Link: <a href="${doc.Link}"> ${doc.Link || "Nicht Verfügbar"}</a></p>
-                <p>Verfügbare Plätze: ${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
-                <p>Dauer: ${doc.Dauer || "Nicht verfügbar"}</p>
-                <p>Beginn: ${doc.Beginn || "Nicht verfügbar"}</p>
-                <p>Zuletzt geupdatet: ${formattedDateTime || "Nicht verfügbar"}</p>
-            </section>
+                <section class = "praktikum">
+                    <p style = "text-align: center">Unternehmensname:</p><p style = "color: white"> ${doc.Name}</p>
+                    <p style = "color: #66FCF1">| Adresse: </p><p><a style ="color: white" href = "https://www.google.de/maps/place/${doc.Ort}"><u>${doc.Ort || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">| Berufsfeld:</p><p style = "color: white"> ${doc.Berufsfeld || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">| Beschreibung der Tätigkeit:</p><p style = "color: white"> ${doc.Beschreibung || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">| Email: </p><p><a style = "color: white" href ="mailto:${doc.Email}"><u>${doc.Email || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">| Telefon: </p><p><a style = "color: white" href ="tel:${doc.Tel}"><u>${doc.Tel || "Nicht verfügbar"}</u></a></p>
+                    <p style = "color: #66FCF1">| Link: </p><p> <a style="color: white" href= "${doc.Link}"><u>${doc.Link || "Nicht verführbar"}</u></a></p>
+                    <p style = "color: #66FCF1">| Verfügbare Plätze: </p><p style = "color: white">${doc.AnzahlPlaetze || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">| Dauer: </p><p style = "color: white"> ${doc.Dauer || "Nicht verführbar"}</p>    
+                    <p style = "color: #66FCF1">| Beginn: </p><p style = "color: white"> ${doc.Beginn || "Nicht verfügbar"}</p>
+                    <p style = "color: #66FCF1">| Letztes Update: </p><p style = "color: white"> ${formattedDateTime || "Nicht verfügbar"}</p>
+                </section>
             `;
         }
 
