@@ -179,7 +179,7 @@ function displayPraktika() {
         const main = document.createElement('main');
         main.className = 'praktikas';
         main.innerHTML = `
-        <h2>Praktika</h2>`
+            <h2>Ergebnisse für Praktika</h2>`
         for (let i = 0; i < data.documents.length; i++) {
             const doc = data.documents[i];
             const updatet=doc['$updatedAt'];
