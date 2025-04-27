@@ -54,7 +54,7 @@ function showFilter(){
             <label for="stadt">Stadt:</label>
             <input type="text" id="ort" name="ort">
             <label for="berufsfeld">Berufsfeld:</label>
-            <input type="" id="berufsfeld" name="berufsfeld">
+            <input type="text" id="berufsfeld" name="berufsfeld">
             <label for="Beginn">Beginn:</label>
             <input type="date" id="beginn" name="beginn">
             <label for="Dauer">Dauer (in Tagen):</label>
