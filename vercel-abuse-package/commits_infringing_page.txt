@@ -1,0 +1,43 @@
+d5db3c8 | 2025-04-27 11:15:36 +0200 | Dominique Kromm | Fehler beim Filter behoben.
+f576488 | 2025-04-27 11:13:55 +0200 | Dominique Kromm | Gefilterte Sachen (Überschrift) erscheinung angepasst.
+1a2793c | 2025-04-26 15:18:06 +0200 | Dominique Kromm | Gefilterte sachen erscheinung angepasst.
+dfbcb75 | 2025-04-17 07:59:04 +0200 | Dominique Kromm | Homepage aktualisiert mit Einstiegstext.
+71b5b88 | 2025-04-16 16:01:11 +0200 | Dominique Kromm | Reiter Bewerben bearbeitet. Header angepasst. Link für E-Mail auf der Kontaktseite.
+9f42277 | 2025-04-16 14:40:12 +0200 | Dominique Kromm | Neuen Reiter: Bewerben hinzugefügt und Namen der Website neben das Logo geschrieben
+7be6b09 | 2025-04-12 15:22:25 +0200 | Dominique Kromm | Aussehen der Praktikumsstellen geändert. Footer angepasst. Name der Website: Praktikums Radar. Logo geändert. Links für Adresse, Link, E-Mail und Telefon eingefügt und unterstrichen zur indikation eines Linkes.
+36447fc | 2025-04-12 10:32:15 +0200 | Dominique Kromm | Einige Anpassungen am Design der Website und das Logo geändert
+4964519 | 2025-04-12 09:34:44 +0200 | Dominique Kromm | Einige Anpassungen am Design der Website
+4509417 | 2025-04-10 19:23:59 +0200 | Dominique Kromm | Datenbankverlinkung mit meiner Datenbank, die auch für den ganzen Prozess verwendet wird
+471d4a9 | 2025-04-10 18:46:35 +0200 | Dominique Kromm | Merge remote-tracking branch 'origin/main'
+dd7cb14 | 2025-04-09 12:56:22 +0200 | Nino678190 | script.js aktualisieren
+708d4bd | 2025-04-08 10:20:12 +0200 | Nino678190 | Ändere die Anzeige von Kontaktdaten in displayPraktikas, um E-Mail- und Telefonlinks hinzuzufügen.
+2b723dc | 2025-04-07 21:02:31 +0200 | Dominique Kromm | Änderung an der Farbpalette und bisschen Kommentiert, außerdem neuen Reiter "Kontakt" hinzugefügt und das Layout angepasst (bisschen)
+202b3ff | 2025-04-07 11:41:13 +0200 | Nino678190 | script.js aktualisieren
+abc0581 | 2025-04-06 21:48:10 +0200 | Nino678190 | Update README.md
+1ac9ca1 | 2025-04-06 21:43:14 +0200 | Nino678190 | Update script.js
+7b372cb | 2025-04-04 14:02:12 +0200 | Nino678190 | Aktualisiere die Funktion showPraktikasFirst zur asynchronen Datenabfrage und füge einen Ladeindikator hinzu
+8438213 | 2025-04-04 13:56:11 +0200 | Nino678190 | Füge neue Funktion getDataFirst hinzu und aktualisiere showPraktikasFirst zur Anzeige von Praktika; passe CSS-Stile für main und filter an
+2773464 | 2025-04-04 13:42:08 +0200 | Nino678190 | Ändere console.log zu console.error für Fehlerausgaben in der getData-Funktion
+433f0dc | 2025-04-04 13:41:47 +0200 | Nino678190 | Aktualisiere Datenbank- und Sammlungs-IDs in der getData-Funktion
+37c5ea0 | 2025-04-04 13:41:04 +0200 | Nino678190 | Entferne die package.json-Datei
+f7a4be6 | 2025-04-04 13:30:44 +0200 | Nino678190 | Ändere die Klasse der Logo-Bilder und passe die Größe an
+1beb018 | 2025-04-04 13:28:56 +0200 | Nino678190 | Füge neues Icon hinzu und aktualisiere Meta-Tags in HTML-Dateien; verbessere CSS-Variablen und -Stile
+22753f8 | 2025-04-04 13:16:35 +0200 | Nino678190 | Füge Noto Sans Schriftarten und Lizenzdatei hinzu
+97a894d | 2025-04-04 13:16:02 +0200 | Nino678190 | Verbessere die Speicherung von Filterwerten in sessionStorage und füge neue CSS-Variablen für Schriftfarbe und Link-Stil hinzu
+32cc25d | 2025-04-04 13:09:38 +0200 | Nino678190 | Verbessere die Header-Struktur und füge eine Reset-Funktion für Filter hinzu; implementiere Speicherung der Eingabewerte in sessionStorage
+7c89f2e | 2025-04-04 12:47:03 +0200 | Nino678190 | Aktualisiere die Anzeige von Praktika: Formatiere das Aktualisierungsdatum und verbessere die Beschriftungen der Informationen
+efc5fdb | 2025-04-04 12:35:41 +0200 | Nino678190 | Füge neue HTML-Seite für Praktika hinzu und integriere Appwrite SDK in die Anwendung
+cac6931 | 2025-04-03 23:32:43 +0200 | Nino678190 | Aktualisiere die Filteranzeige und füge eine neue Funktion zur endgültigen Anzeige von Praktika hinzu
+29fdbfb | 2025-04-03 23:26:20 +0200 | Nino678190 | Füge Abfrageeinschränkungen hinzu: Begrenze die Ergebnisse auf 25 und sortiere nach Aktualisierungsdatum
+0ac9c2b | 2025-04-03 23:20:33 +0200 | Nino678190 | Füge Filterfunktionalität hinzu und aktualisiere die Datenabfrage in script.js
+e79d06a | 2025-04-03 23:09:28 +0200 | Nino678190 | Erweitere die Anzeige von Praktika um Dauer, Beginn und Aktualisierungsdatum
+0d4b119 | 2025-04-03 23:06:45 +0200 | Nino678190 | Ändere die Funktion showPraktikas in displayPraktikas und passe die Struktur zur Anzeige von Praktika an
+776f57d | 2025-04-03 23:05:26 +0200 | Nino678190 | Aktualisiere Dokumenten-ID in getData und erweitere showPraktikas zur Anzeige zusätzlicher Dokumentenfelder
+423591c | 2025-04-03 23:01:17 +0200 | Nino678190 | Aktualisiere API-Endpunkt und Projekt-ID in script.js; implementiere Datenabruf
+6bf6191 | 2025-04-03 22:46:00 +0200 | Nino678190 | Ändere den Hauptdateinamen in package.json von index.js zu script.js
+68df0e7 | 2025-04-03 22:45:11 +0200 | Nino678190 | Füge Start- und Entwicklungs-Skripte zu package.json hinzu und aktualisiere die Abhängigkeiten
+b2c8ed1 | 2025-04-03 22:41:36 +0200 | Nino678190 | Füge Rückgabe der Antwort in getData hinzu und implementiere showPraktikas zur Datenanzeige
+79efbc4 | 2025-04-03 22:40:46 +0200 | Nino678190 | Füge onload-Event hinzu und implementiere die loadHome-Funktion zur dynamischen Seitenladung
+a9bc06b | 2025-04-03 22:39:40 +0200 | Nino678190 | Füge index.html, script.js und style.css hinzu; implementiere Header, Footer und Home-Seite
+a44e836 | 2025-04-03 19:21:59 +0200 | Nino678190 | Initial project setup with package.json, package-lock.json, and script.js for Appwrite integration
+af6fe89 | 2025-04-03 15:07:19 +0200 | Nino678190 | Initial commit

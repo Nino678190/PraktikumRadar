@@ -1,0 +1,43 @@
+15bd43f | 2025-04-07 21:24:40 +0200 | Nino678190 | Füge einen Hinweis zu Testdaten im Footer hinzu
+0ec69cd | 2025-04-07 21:18:36 +0200 | Nino678190 | Entferne überflüssige CSS-Regeln für die Textauswahl
+e5297d9 | 2025-04-07 20:34:26 +0200 | Nino678190 | Füge Platzhaltertexte zu den Eingabefeldern im Filterformular hinzu und verbessere das Styling für Eingaben und das Footer-Layout
+a0aa5cb | 2025-04-07 20:28:42 +0200 | Nino678190 | Aktualisiere die Startseite mit neuen Inhalten und verbessere das Styling für den Dunkelmodus
+9bd410c | 2025-04-07 20:23:05 +0200 | Nino678190 | Setze das Auswahlfeld im Filterformular zurück, wenn das Formular zurückgesetzt wird
+62c81a8 | 2025-04-07 20:19:31 +0200 | Nino678190 | Entferne überflüssige Leerzeilen in script.js und style.css
+e78f38b | 2025-04-07 20:15:29 +0200 | Nino678190 | Vereinheitliche Hover- und Active-Stile für Links; entferne nicht verwendete .disabled-Klasse und füge Cursor-Stil für .description-toggle hinzu
+6c80f7a | 2025-04-07 19:48:15 +0200 | Nino678190 | Entferne überflüssige Konsolen-Logs und aktualisiere die Event-Listener-Logik für das Berufsfeld-Dropdown im Filter
+3f7b4b8 | 2025-04-07 19:45:32 +0200 | Nino678190 | Ändere das Filterformular zur Verwendung eines Dropdowns für Berufsfelder; aktualisiere die Filterlogik und verbessere die asynchrone Datenabfrage für Praktika
+f470a3c | 2025-04-07 14:24:52 +0200 | Nino678190 | Verbessere das Layout des Filterformulars durch Hinzufügen von Abschnitts-Elementen; aktualisiere CSS für flexibles Wrapping der Praktikumsplatz-Elemente
+ed314e5 | 2025-04-07 11:41:49 +0200 | Nino678190 | script.js aktualisieren
+74fa73d | 2025-04-06 23:05:00 +0200 | Nino678190 | Entferne das Konsolen-Logging in der Funktion getDataFirst zur Verbesserung der Codequalität
+1845987 | 2025-04-06 23:03:54 +0200 | Nino678190 | Aktualisiere die Filterfunktion für Praktika; implementiere asynchrone Datenabfrage und verbessere die Anzeige der Praktika mit Beschreibungstoggle
+0fb87e2 | 2025-04-06 22:48:52 +0200 | Nino678190 | Verbessere die Handhabung von Links und Icons in der Anzeige von Praktika; aktualisiere CSS für Übergänge und Hover-Effekte
+c2f5d04 | 2025-04-06 21:42:03 +0200 | Nino678190 | Verbessere die Anzeige von Praktika mit Ladeindikator und Beschreibungstoggle; aktualisiere Links und E-Mail-Validierungen
+adcb5f0 | 2025-04-06 20:13:49 +0200 | Nino678190 | Aktualisiere die Darstellung der Praktikumsplätze und füge Validierungen für E-Mail, Telefon und Links hinzu
+b2e99d7 | 2025-04-06 19:50:02 +0200 | Nino678190 | Füge das Layout für Praktikumsplätze hinzu und aktualisiere CSS-Stile für die Darstellung
+7b372cb | 2025-04-04 14:02:12 +0200 | Nino678190 | Aktualisiere die Funktion showPraktikasFirst zur asynchronen Datenabfrage und füge einen Ladeindikator hinzu
+8438213 | 2025-04-04 13:56:11 +0200 | Nino678190 | Füge neue Funktion getDataFirst hinzu und aktualisiere showPraktikasFirst zur Anzeige von Praktika; passe CSS-Stile für main und filter an
+2773464 | 2025-04-04 13:42:08 +0200 | Nino678190 | Ändere console.log zu console.error für Fehlerausgaben in der getData-Funktion
+433f0dc | 2025-04-04 13:41:47 +0200 | Nino678190 | Aktualisiere Datenbank- und Sammlungs-IDs in der getData-Funktion
+37c5ea0 | 2025-04-04 13:41:04 +0200 | Nino678190 | Entferne die package.json-Datei
+f7a4be6 | 2025-04-04 13:30:44 +0200 | Nino678190 | Ändere die Klasse der Logo-Bilder und passe die Größe an
+1beb018 | 2025-04-04 13:28:56 +0200 | Nino678190 | Füge neues Icon hinzu und aktualisiere Meta-Tags in HTML-Dateien; verbessere CSS-Variablen und -Stile
+22753f8 | 2025-04-04 13:16:35 +0200 | Nino678190 | Füge Noto Sans Schriftarten und Lizenzdatei hinzu
+97a894d | 2025-04-04 13:16:02 +0200 | Nino678190 | Verbessere die Speicherung von Filterwerten in sessionStorage und füge neue CSS-Variablen für Schriftfarbe und Link-Stil hinzu
+32cc25d | 2025-04-04 13:09:38 +0200 | Nino678190 | Verbessere die Header-Struktur und füge eine Reset-Funktion für Filter hinzu; implementiere Speicherung der Eingabewerte in sessionStorage
+7c89f2e | 2025-04-04 12:47:03 +0200 | Nino678190 | Aktualisiere die Anzeige von Praktika: Formatiere das Aktualisierungsdatum und verbessere die Beschriftungen der Informationen
+efc5fdb | 2025-04-04 12:35:41 +0200 | Nino678190 | Füge neue HTML-Seite für Praktika hinzu und integriere Appwrite SDK in die Anwendung
+cac6931 | 2025-04-03 23:32:43 +0200 | Nino678190 | Aktualisiere die Filteranzeige und füge eine neue Funktion zur endgültigen Anzeige von Praktika hinzu
+29fdbfb | 2025-04-03 23:26:20 +0200 | Nino678190 | Füge Abfrageeinschränkungen hinzu: Begrenze die Ergebnisse auf 25 und sortiere nach Aktualisierungsdatum
+0ac9c2b | 2025-04-03 23:20:33 +0200 | Nino678190 | Füge Filterfunktionalität hinzu und aktualisiere die Datenabfrage in script.js
+e79d06a | 2025-04-03 23:09:28 +0200 | Nino678190 | Erweitere die Anzeige von Praktika um Dauer, Beginn und Aktualisierungsdatum
+0d4b119 | 2025-04-03 23:06:45 +0200 | Nino678190 | Ändere die Funktion showPraktikas in displayPraktikas und passe die Struktur zur Anzeige von Praktika an
+776f57d | 2025-04-03 23:05:26 +0200 | Nino678190 | Aktualisiere Dokumenten-ID in getData und erweitere showPraktikas zur Anzeige zusätzlicher Dokumentenfelder
+423591c | 2025-04-03 23:01:17 +0200 | Nino678190 | Aktualisiere API-Endpunkt und Projekt-ID in script.js; implementiere Datenabruf
+6bf6191 | 2025-04-03 22:46:00 +0200 | Nino678190 | Ändere den Hauptdateinamen in package.json von index.js zu script.js
+68df0e7 | 2025-04-03 22:45:11 +0200 | Nino678190 | Füge Start- und Entwicklungs-Skripte zu package.json hinzu und aktualisiere die Abhängigkeiten
+b2c8ed1 | 2025-04-03 22:41:36 +0200 | Nino678190 | Füge Rückgabe der Antwort in getData hinzu und implementiere showPraktikas zur Datenanzeige
+79efbc4 | 2025-04-03 22:40:46 +0200 | Nino678190 | Füge onload-Event hinzu und implementiere die loadHome-Funktion zur dynamischen Seitenladung
+a9bc06b | 2025-04-03 22:39:40 +0200 | Nino678190 | Füge index.html, script.js und style.css hinzu; implementiere Header, Footer und Home-Seite
+a44e836 | 2025-04-03 19:21:59 +0200 | Nino678190 | Initial project setup with package.json, package-lock.json, and script.js for Appwrite integration
+af6fe89 | 2025-04-03 15:07:19 +0200 | Nino678190 | Initial commit

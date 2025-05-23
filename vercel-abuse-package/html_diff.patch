@@ -1,0 +1,29 @@
+--- vercel-abuse-package/original_index.html	2025-05-05 15:08:15.320040102 +0200
++++ vercel-abuse-package/infringing_homepage.html	2025-05-05 15:08:15.442041253 +0200
+@@ -1,5 +1,5 @@
+ <!DOCTYPE html>
+-<html>
++<html lang = "de">
+     <head>
+         <meta charset='UTF-8'>
+         <meta name='viewport' content='width=device-width'>
+@@ -10,7 +10,7 @@
+         <meta name='robots' content='nofollow'>
+         <meta name='copyright' content='Nino678190'>
+         <link rel='stylesheet' href='style.css'>
+-        <link rel='shortcut icon' type='image/x-icon' href='images/icons8-calendar-100.png'>
++        <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'>
+         <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script> <!-- Appwrite SDK -->
+         <script src='script.js'></script> <!-- Main JavaScript file -->
+         <title>
+@@ -18,7 +18,6 @@
+         </title>
+     </head>
+     <body onload="loadHome()">
+-        <noscript>Bitte aktiviere Javascrupt, damit diese Seite korrekt funktioniert</noscript>
+-        
++        <noscript>Bitte aktiviere Javascript, damit diese Seite korrekt funktioniert</noscript>
+     </body>
+-</html>
+\ Kein Zeilenumbruch am Dateiende.
++</html>
